@@ -267,7 +267,10 @@
     line-height: 1.55;
   }
   .bp-byok-list li::before {
-    content: "&#10003;";   /* native check mark via HTML entity */
+    /* U+2713 (CHECK MARK) via CSS escape &#8212; `content:` doesn't decode
+       HTML entities, only CSS \xxxx escapes (or literal UTF-8). The
+       earlier `&#10003;` rendered as the literal 8-char string. */
+    content: "\2713";
     position: absolute;
     left: 0;
     top: 6px;
@@ -448,7 +451,10 @@
     position: relative;
   }
   .bp-tier ul li::before {
-    content: "&bull;";
+    /* U+2022 (BULLET) via CSS escape. Same fix as the BYOK check mark
+       above &#8212; `content:` ignores HTML entities; only \xxxx escapes or
+       literal UTF-8 work. */
+    content: "\2022";
     position: absolute;
     left: 0;
     top: 0;
