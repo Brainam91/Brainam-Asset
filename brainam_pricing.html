@@ -813,3 +813,42 @@
   </details>
 
 </div>
+
+<!-- Auto-resize protocol. Broadcasts the current document height to the
+     parent (Framer) window every time the user opens/closes the details
+     panel, the viewport resizes, or content reflows. Framer's parent
+     page installs a tiny listener (see instructions provided alongside
+     this file) that resizes the iframe to match.
+     Envelope: { source: 'brainam-pricing', type: 'bp-resize', height: N } -->
+<script>
+(function () {
+  function measure() {
+    var d = document, b = d.body, h = d.documentElement;
+    return Math.max(
+      b.scrollHeight, b.offsetHeight,
+      h.scrollHeight, h.offsetHeight, h.clientHeight
+    );
+  }
+  var lastSent = -1;
+  function send(force) {
+    var h = measure();
+    if (!force && Math.abs(h - lastSent) < 4) return;
+    lastSent = h;
+    try {
+      window.parent.postMessage({
+        source: 'brainam-pricing',
+        type:   'bp-resize',
+        height: h
+      }, '*');
+    } catch (e) { /* parent unreachable */ }
+  }
+  if (document.readyState === 'complete') send(true);
+  else window.addEventListener('load', function () { send(true); });
+  document.addEventListener('toggle', function (e) {
+    if (!e.target || e.target.tagName !== 'DETAILS') return;
+    setTimeout(function () { send(true); }, 60);
+  }, true);
+  window.addEventListener('resize', function () { send(false); });
+  setInterval(function () { send(false); }, 350);
+})();
+</script>
