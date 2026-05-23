@@ -1,0 +1,380 @@
+<!-- &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+     Brainam &#183; Human Agent vs Brainam AI Agent &#8212; comparison table
+     Dark theme, designed to sit on the Brainam site root colour #08070e.
+
+     &#8226; Outer background is transparent &#8212; inherits whatever Framer page
+       colour sits behind it. The internal card surfaces are slightly
+       lighter than #08070e so the table reads as a panel against the
+       page, not as a flat wash.
+     &#8226; No brand wordmark &#8212; the Framer site already has its own header.
+     &#8226; All styles scoped via .bc- prefix so Framer's own classes can't
+       collide. System font stack &#8212; no external loads.
+     &#8226; Desktop: 3-column table (Dimension / Human / Brainam AI).
+     &#8226; Mobile (&#8804; 720px): each row collapses into a stacked card so the
+       data stays readable on a phone without horizontal scroll.
+
+     To use in Framer:
+       1. Add a layer &#8594; Embed &#8594; Code (HTML).
+       2. Paste the entire content of this file (style + table) into the
+          embed dialog.
+       3. Set the embed's width to "Fill" and height to "Fit Content".
+     &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
+<style>
+  .bc-wrap {
+    /* All colours exposed as CSS variables so they can be overridden
+       from Framer's "Custom CSS" panel without forking this file. The
+       defaults are tuned for the Brainam site's #08070e root colour. */
+    --bc-panel:       #14132a;          /* card body &#8212; slightly lifted vs #08070e */
+    --bc-panel-alt:   #1a1834;          /* zebra stripe */
+    --bc-border:      rgba(255, 255, 255, 0.08);
+    --bc-border-mid:  rgba(255, 255, 255, 0.14);
+    --bc-header-bg:   #1d1b3c;
+    --bc-text-hi:     #f5f3ff;          /* near-white */
+    --bc-text-md:     #c8c4dd;
+    --bc-text-lo:     #8a86a8;
+    --bc-accent:      #a855f7;          /* brand violet &#8212; brighter for dark bg */
+    --bc-accent-2:    #c4b5fd;          /* lighter violet for hover / highlights */
+    --bc-accent-bg:   rgba(168, 85, 247, 0.10);   /* AI column body wash */
+    --bc-accent-soft: rgba(168, 85, 247, 0.18);   /* AI column hover wash */
+    --bc-accent-strong: #7c3aed;        /* AI header bar */
+    --bc-cta-bg:      rgba(168, 85, 247, 0.10);
+    --bc-cta-border:  rgba(168, 85, 247, 0.40);
+    --bc-radius:      14px;
+
+    box-sizing: border-box;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
+                 Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--bc-text-hi);
+    background: transparent;            /* inherits the Framer page colour */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .bc-wrap *, .bc-wrap *::before, .bc-wrap *::after { box-sizing: border-box; }
+
+  /* &#9472;&#9472; Header &#8212; title + subtitle only, no brand wordmark &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  .bc-head {
+    text-align: center;
+    margin-bottom: 22px;
+  }
+  .bc-title {
+    margin: 0 0 8px;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    line-height: 1.18;
+    color: var(--bc-text-hi);
+  }
+  .bc-title .bc-vs {
+    margin: 0 10px;
+    font-weight: 500;
+    color: var(--bc-text-lo);
+  }
+  .bc-subtitle {
+    margin: 0;
+    font-size: 14.5px;
+    color: var(--bc-text-lo);
+  }
+
+  /* &#9472;&#9472; Table &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  .bc-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--bc-panel);
+    border: 1px solid var(--bc-border);
+    border-radius: var(--bc-radius);
+    overflow: hidden;
+  }
+  .bc-table th, .bc-table td {
+    padding: 16px 24px;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 14.5px;
+    line-height: 1.45;
+    color: var(--bc-text-md);
+    border-bottom: 1px solid var(--bc-border);
+  }
+  .bc-table tbody tr:last-child th,
+  .bc-table tbody tr:last-child td { border-bottom: none; }
+
+  /* Zebra stripe on the dimension + human columns only; the AI column
+     keeps its own faint violet wash so it remains the visual anchor. */
+  .bc-table tbody tr:nth-child(even) td.bc-col-dim,
+  .bc-table tbody tr:nth-child(even) td.bc-col-human {
+    background: var(--bc-panel-alt);
+  }
+  .bc-table tbody td.bc-col-ai { background: var(--bc-accent-bg); }
+
+  /* Hover: subtle row-lift effect for quick scanning */
+  .bc-table tbody tr:hover td.bc-col-dim,
+  .bc-table tbody tr:hover td.bc-col-human {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .bc-table tbody tr:hover td.bc-col-ai { background: var(--bc-accent-soft); }
+
+  /* Header row */
+  .bc-table thead th {
+    padding: 18px 24px;
+    background: var(--bc-header-bg);
+    border-bottom: 2px solid var(--bc-border-mid);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--bc-text-lo);
+  }
+  .bc-table thead th.bc-col-ai {
+    background: var(--bc-accent-strong);
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+
+  /* Column-specific styling */
+  .bc-table td.bc-col-dim {
+    font-weight: 700;
+    color: var(--bc-text-hi);
+    width: 28%;
+    white-space: nowrap;
+  }
+  .bc-table td.bc-col-human { width: 36%; }
+  .bc-table td.bc-col-ai {
+    width: 36%;
+    font-weight: 600;
+    color: var(--bc-accent-2);
+  }
+
+  /* Per-value label that only shows when the row collapses on mobile */
+  .bc-mobile-label { display: none; }
+
+  /* &#9472;&#9472; Footer CTA &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  .bc-foot {
+    margin-top: 18px;
+    padding: 22px 28px;
+    background: var(--bc-cta-bg);
+    border: 1px solid var(--bc-cta-border);
+    border-radius: var(--bc-radius);
+    text-align: center;
+  }
+  .bc-foot-headline {
+    margin: 0 0 6px;
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--bc-accent-2);
+    line-height: 1.4;
+  }
+  .bc-foot-fine {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--bc-text-md);
+    line-height: 1.5;
+  }
+  .bc-foot-headline .bc-arrow {
+    display: inline-block;
+    margin: 0 8px;
+    color: var(--bc-accent);
+  }
+
+  /* &#9472;&#9472; Mobile / phones (&#8804; 720px) &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  /*
+   * On phones the 3-column layout is impossible to read in 375px. We
+   * convert each row into a stacked card:
+   *   &#8226; Dimension label across the top in uppercase
+   *   &#8226; "Human" sub-row with the value
+   *   &#8226; "Brainam" sub-row with the value (violet pop)
+   */
+  @media (max-width: 720px) {
+    .bc-wrap { padding: 16px; }
+
+    .bc-title    { font-size: 22px; }
+    .bc-subtitle { font-size: 13px; }
+
+    .bc-table thead { display: none; }      /* labels move inline */
+    .bc-table tbody, .bc-table tr,
+    .bc-table th,    .bc-table td { display: block; width: 100%; }
+
+    .bc-table tbody tr {
+      padding: 14px 16px 16px;
+      border-bottom: 1px solid var(--bc-border);
+      background: var(--bc-panel);
+    }
+    .bc-table tbody tr:nth-child(even) { background: var(--bc-panel-alt); }
+    .bc-table tbody tr:last-child      { border-bottom: none; }
+
+    .bc-table td {
+      padding: 4px 0;
+      border: none !important;
+      background: transparent !important;
+      font-size: 14px;
+    }
+
+    /* Dimension becomes the card's headline */
+    .bc-table td.bc-col-dim {
+      width: 100%;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--bc-text-lo);
+      margin-bottom: 8px;
+      white-space: normal;
+    }
+
+    .bc-mobile-label {
+      display: inline-block;
+      min-width: 90px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--bc-text-lo);
+      margin-right: 10px;
+    }
+    .bc-table td.bc-col-human { color: var(--bc-text-md); }
+    .bc-table td.bc-col-ai    {
+      color: var(--bc-accent-2);
+      font-weight: 700;
+      padding-top: 6px;
+    }
+    .bc-table td.bc-col-ai .bc-mobile-label { color: var(--bc-accent); }
+
+    .bc-foot          { padding: 18px 18px; }
+    .bc-foot-headline { font-size: 15px; }
+    .bc-foot-fine     { font-size: 12.5px; }
+  }
+</style>
+
+<div class="bc-wrap">
+
+  <!-- Title + subtitle. No brand wordmark &#8212; the Framer site already
+       carries the BRAINAM logo in its global header. -->
+  <div class="bc-head">
+    <h2 class="bc-title">
+      Human Agent <span class="bc-vs">vs</span> Brainam AI Agent
+    </h2>
+    <p class="bc-subtitle">
+      Side-by-side reality check &#8212; costs, hours, coverage, quality
+    </p>
+  </div>
+
+  <!-- Table -->
+  <table class="bc-table" aria-label="Human Agent vs Brainam AI Agent comparison">
+    <thead>
+      <tr>
+        <th class="bc-col-dim"   scope="col">Dimension</th>
+        <th class="bc-col-human" scope="col">Human Agent</th>
+        <th class="bc-col-ai"    scope="col">Brainam AI Agent</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="bc-col-dim">Monthly cost</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>&#8377;25,000 &#8211; &#8377;60,000</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>From &#8377;499 / month</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Working hours</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>8 hrs/day &#183; 5&#8211;6 days/week</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>24 &#215; 7 &#215; 365</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Response time</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>30 sec &#8211; 5 min</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>Under 2 seconds</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Concurrent conversations</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>1&#8211;3 at a time</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>Unlimited parallel</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Languages supported</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>1&#8211;2 typically</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>100+ out of the box</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Onboarding / ramp-up</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>2&#8211;6 weeks of training</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>Same day</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Sick days / leave</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>15&#8211;25 leaves/yr + sick days</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>Zero</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Attrition</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>30&#8211;60% annual churn (BPO)</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>Memory persists forever</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Consistency</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>Varies by mood / fatigue</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>Identical every time</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Knowledge updates</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>Days of re-training</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>Instant &#8212; one edit</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Scalability for spikes</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>Weeks to hire + train</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>Same wallet handles 10,000&#215;</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Tool access</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>Switches 5&#8211;10 tabs slowly</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>Native CRM / WhatsApp / payments</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Quality monitoring</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>Manual QA, costly review team</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>Every chat logged + audit trail</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Recruitment cost</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>&#8377;15K &#8211; &#8377;40K per hire</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>Zero</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Office infra</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>Desk &#183; laptop &#183; electricity &#183; HR</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>Just a Brainam account</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Data privacy (DPDP)</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>Depends on staff training</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>PII redaction built-in</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Time-zone coverage</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>3 shifts to cover globally</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>Always-on, every zone</td>
+      </tr>
+      <tr>
+        <td class="bc-col-dim">Compliance &amp; guardrails</td>
+        <td class="bc-col-human"><span class="bc-mobile-label">Human</span>Manual checklists, supervisor</td>
+        <td class="bc-col-ai"><span class="bc-mobile-label">Brainam</span>Hard limits enforced in code</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <!-- Footer CTA -->
+  <div class="bc-foot">
+    <p class="bc-foot-headline">
+      &#8377;35,000/month human agent
+      <span class="bc-arrow">&#8594;</span>
+      &#8377;0.16 per Brainam conversation.
+    </p>
+    <p class="bc-foot-fine">
+      Brainam handles 6,000+ conversations on a &#8377;999 pack &#8212; 24/7, every language.
+    </p>
+  </div>
+
+</div>
