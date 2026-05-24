@@ -1,27 +1,32 @@
-<!-- &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
-     Brainam &#183; About Us page block
+<!--
+  Brainam · About Us page block
+  -------------------------------------------------------------
+  Dark theme matching the Brainam site root colour #08070e. Same
+  design language as the other embeds (comparison / pricing /
+  contact). Scoped via the .ba- prefix so it can coexist with them
+  on the same Framer page.
 
-     Dark theme matching the Brainam site root colour #08070e. Same
-     design language as the other embeds (comparison / pricing /
-     contact). Scoped via the .ba- prefix so it can coexist with them
-     on the same Framer page.
+  Structure:
+    1. Hero        - one-line mission claim + subhead
+    2. Story       - three short prose blocks (Problem -> Why -> How)
+    3. Principles  - 6-card grid of what we believe
+    4. Numbers     - three product facts that ground the story
+    5. Location    - built in Ahmedabad
+    6. CTA         - tagline + signup / WhatsApp
+    7. Legal strip - operating entity, CIN, GSTIN, both addresses
 
-     Structure:
-       1. Hero &#8212; one-line mission claim + subhead
-       2. Story &#8212; three short prose blocks (Problem &#8594; Why we built it &#8594; How it works)
-       3. Principles &#8212; 5-card grid of what we believe
-       4. Numbers strip &#8212; three product facts that ground the story
-       5. Location callout &#8212; built in Ahmedabad
-       6. Tagline + CTA buttons
+  Pure ASCII (HTML entities) so the file survives any editor or paste
+  pipeline that down-converts encodings.
 
-     Pure ASCII (HTML entities) so the file survives any editor or paste
-     pipeline that down-converts encodings.
+  Use in Framer:
+    1. Upload to your GitHub Pages repo.
+    2. Embed -> URL -> paste the GitHub Pages link.
+    3. Width: Fill, Height: Fit Content (auto-resize broadcaster included).
 
-     Use in Framer:
-       1. Upload to your GitHub Pages repo.
-       2. Embed &#8594; URL &#8594; paste the GitHub Pages link.
-       3. Width: Fill &#183; Height: ~2100px desktop / 3400px mobile.
-     &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
+  IMPORTANT: do NOT open this file in TextEdit. Use VS Code or any
+  proper code editor. TextEdit silently corrupts HTML on save.
+  -------------------------------------------------------------
+-->
 <style>
   .ba-wrap {
     --ba-panel:        #14132a;
@@ -60,7 +65,7 @@
   .ba-wrap *::before,
   .ba-wrap *::after { box-sizing: border-box; }
 
-  /* &#9472;&#9472; Eyebrow &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  /* Eyebrow chip */
   .ba-eyebrow {
     display: inline-block;
     padding: 5px 12px;
@@ -75,7 +80,7 @@
     margin-bottom: 18px;
   }
 
-  /* &#9472;&#9472; Hero &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  /* Hero */
   .ba-hero {
     text-align: center;
     padding: 28px 0 44px;
@@ -98,7 +103,7 @@
     color: var(--ba-text-md);
   }
 
-  /* &#9472;&#9472; Story prose blocks &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  /* Story prose blocks */
   .ba-story {
     margin: 0 auto 56px;
     max-width: 820px;
@@ -124,7 +129,7 @@
     margin: 36px 0;
   }
 
-  /* &#9472;&#9472; Principles grid &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  /* Section header (Principles / Numbers) */
   .ba-section-head {
     text-align: center;
     margin-bottom: 32px;
@@ -144,6 +149,7 @@
     line-height: 1.55;
   }
 
+  /* Principles grid */
   .ba-principles {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -182,7 +188,7 @@
     color: var(--ba-text-md);
   }
 
-  /* &#9472;&#9472; Numbers strip &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  /* Numbers strip */
   .ba-numbers {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -213,7 +219,7 @@
     line-height: 1.5;
   }
 
-  /* &#9472;&#9472; Location callout &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  /* Location callout */
   .ba-location {
     margin-bottom: 56px;
     padding: 32px 28px;
@@ -245,10 +251,11 @@
     letter-spacing: 0.4px;
   }
 
-  /* &#9472;&#9472; CTA block &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  /* CTA block */
   .ba-cta {
     text-align: center;
     padding: 8px 0 0;
+    margin-bottom: 40px;
   }
   .ba-cta-tagline {
     font-size: 28px;
@@ -304,13 +311,39 @@
   }
   .ba-cta-arrow { font-size: 14px; }
 
-  /* &#9472;&#9472; Responsive: tablet (&#8804; 900px) &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  /* Legal disclosure strip (matches contact page) */
+  .ba-legal {
+    margin-top: 32px;
+    padding: 14px 18px;
+    background: var(--ba-panel-alt);
+    border: 1px solid var(--ba-border);
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: baseline;
+    justify-content: center;
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--ba-text-md);
+    line-height: 1.55;
+  }
+  .ba-legal strong { color: var(--ba-text-hi); font-weight: 700; }
+  .ba-legal .ba-legal-sep {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--ba-text-lo);
+    opacity: 0.6;
+    align-self: center;
+    flex-shrink: 0;
+  }
+
+  /* Tablet */
   @media (max-width: 900px) {
     .ba-hero h1 { font-size: 38px; }
     .ba-hero p  { font-size: 15px; }
   }
 
-  /* &#9472;&#9472; Responsive: phone (&#8804; 600px) &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  /* Phone */
   @media (max-width: 600px) {
     .ba-wrap        { padding: 16px; }
     .ba-hero        { padding: 16px 0 28px; }
@@ -326,12 +359,18 @@
     .ba-location h3 { font-size: 18px; }
     .ba-cta-tagline { font-size: 22px; }
     .ba-cta-btn     { padding: 11px 18px; font-size: 13.5px; }
+    .ba-legal {
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+    }
+    .ba-legal-sep { display: none; }
   }
 </style>
 
 <div class="ba-wrap">
 
-  <!-- &#9472;&#9472; Hero &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
+  <!-- Hero -->
   <section class="ba-hero">
     <span class="ba-eyebrow">About Brainam</span>
     <h1>
@@ -344,7 +383,7 @@
     </p>
   </section>
 
-  <!-- &#9472;&#9472; Story &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
+  <!-- Story -->
   <section class="ba-story">
 
     <h3>The gap that shouldn&rsquo;t exist</h3>
@@ -396,11 +435,11 @@
 
   </section>
 
-  <!-- &#9472;&#9472; Principles &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
+  <!-- Principles -->
   <section>
     <div class="ba-section-head">
       <h2>What we believe</h2>
-      <p>Five principles that shape every decision we make about the product.</p>
+      <p>Six principles that shape every decision we make about the product.</p>
     </div>
 
     <div class="ba-principles">
@@ -469,7 +508,7 @@
     </div>
   </section>
 
-  <!-- &#9472;&#9472; Numbers strip &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
+  <!-- Numbers -->
   <section>
     <div class="ba-section-head">
       <h2>The math, briefly</h2>
@@ -502,7 +541,7 @@
     </div>
   </section>
 
-  <!-- &#9472;&#9472; Location callout &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
+  <!-- Location callout -->
   <section class="ba-location">
     <h3>Built in Ahmedabad &middot; for the world</h3>
     <p>
@@ -514,7 +553,7 @@
     <p class="ba-flag">India-first &middot; global-ready &middot; DPDP-compliant by design</p>
   </section>
 
-  <!-- &#9472;&#9472; Tagline + CTA &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
+  <!-- Tagline + CTA -->
   <section class="ba-cta">
     <p class="ba-cta-tagline">
       Your <span class="ba-accent">AI Agents.</span>
@@ -526,13 +565,64 @@
       no card required.
     </p>
     <div class="ba-cta-row">
-      <a class="ba-cta-btn ba-cta-primary" href="https://app.brainam.ai/signup">
+      <a class="ba-cta-btn ba-cta-primary"
+         href="https://app.brainam.ai/signup"
+         target="_top">
         Get started free <span class="ba-cta-arrow">&rarr;</span>
       </a>
-      <a class="ba-cta-btn ba-cta-secondary" href="https://wa.me/917041207187">
+      <a class="ba-cta-btn ba-cta-secondary"
+         href="https://wa.me/917041207187"
+         target="_blank" rel="noopener">
         Talk to us on WhatsApp
       </a>
     </div>
   </section>
 
+  <!-- Legal disclosure strip (matches the contact page footer pattern) -->
+  <div class="ba-legal">
+    <span><strong>Operated by:</strong> Taku Ventures Private Limited</span>
+    <span class="ba-legal-sep" aria-hidden="true"></span>
+    <span><strong>CIN:</strong> U79110DL2024PTC431506</span>
+    <span class="ba-legal-sep" aria-hidden="true"></span>
+    <span><strong>GSTIN:</strong> 07AALCT0078R1ZL</span>
+    <span class="ba-legal-sep" aria-hidden="true"></span>
+    <span><strong>Operating:</strong> G-802, Adani Archway, Jagatpur, Ahmedabad - 382470</span>
+    <span class="ba-legal-sep" aria-hidden="true"></span>
+    <span><strong>Registered:</strong> F-12, Najafgarh, New Delhi - 110043</span>
+  </div>
+
 </div>
+
+<!--
+  Auto-resize broadcaster. Tells the parent Framer page how tall this
+  iframe wants to be, so the embed can be set to "Fit Content".
+  Envelope: { source: 'brainam-about', type: 'brainam:resize', height: N }
+-->
+<script>
+(function () {
+  function measure() {
+    var d = document, b = d.body, h = d.documentElement;
+    return Math.max(
+      b.scrollHeight, b.offsetHeight,
+      h.scrollHeight, h.offsetHeight, h.clientHeight
+    );
+  }
+  var lastSent = -1;
+  function send(force) {
+    var h = measure();
+    if (!force && Math.abs(h - lastSent) < 4) return;
+    lastSent = h;
+    try {
+      window.parent.postMessage({
+        source: 'brainam-about',
+        type:   'brainam:resize',
+        height: h
+      }, '*');
+    } catch (e) { /* parent unreachable */ }
+  }
+  if (document.readyState === 'complete') send(true);
+  else window.addEventListener('load', function () { send(true); });
+  window.addEventListener('resize', function () { send(false); });
+  setInterval(function () { send(false); }, 350);
+})();
+</script>
