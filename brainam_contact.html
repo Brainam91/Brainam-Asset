@@ -1,27 +1,31 @@
-<!-- &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
-     Brainam &#183; Contact Us page block
+<!--
+  Brainam · Contact Us page block
+  -------------------------------------------------------------
+  Dark theme matching the Brainam site root colour #08070e.
 
-     Dark theme matching the Brainam site root colour #08070e.
+  Three cards:
+    - Address  (Ahmedabad operating office + Google Maps link)
+    - WhatsApp (click-to-chat, wa.me/91 70412 07187)
+    - Email    (mailto: hello@brainam.ai)
 
-     Three cards:
-       &#8226; Address  &#8212; physical HQ + "View on Google Maps" link
-       &#8226; WhatsApp &#8212; click-to-chat link (wa.me/<intl-number>)
-       &#8226; Email    &#8212; mailto: link
+  Plus a "Registered Office" disclosure strip and an operating-hours footer.
 
-     Scoped via .bx- prefix so it can coexist with the pricing /
-     comparison blocks on the same Framer page without class collisions.
-     Pure ASCII (HTML entities) so it survives any editor / paste path.
+  Scoped via .bx- prefix so it can coexist with the pricing / comparison
+  blocks on the same Framer page without class collisions.
+  Pure ASCII (HTML entities) so it survives any editor / paste path.
 
-     Use in Framer:
-       1. Upload this file to your GitHub Pages repo.
-       2. In Framer add a layer &#8594; Embed &#8594; URL &#8594; paste the GitHub Pages URL.
-       3. Width: Fill, Height: ~720px desktop / 1300px mobile (responsive
-          cards stack vertically below 720px).
-     &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
+  Use in Framer:
+    1. Upload this file to your GitHub Pages repo.
+    2. In Framer add a layer -> Embed -> URL -> paste the GitHub Pages URL.
+    3. Width: Fill, Height: Fit Content (auto-resize broadcaster included).
+
+  IMPORTANT: do NOT open this file in TextEdit. TextEdit will silently
+  flatten the SVG icons, the form structure and the script into Cocoa
+  rich-text and break the page. Use VS Code (or any code editor) only.
+  -------------------------------------------------------------
+-->
 <style>
   .bx-wrap {
-    /* Brand tokens &#8212; match pricing + comparison blocks so the three
-       embeds feel like one designed page when stacked together. */
     --bx-panel:        #14132a;
     --bx-panel-alt:    #1a1834;
     --bx-border:       rgba(255, 255, 255, 0.08);
@@ -56,11 +60,8 @@
   .bx-wrap *::before,
   .bx-wrap *::after { box-sizing: border-box; }
 
-  /* &#9472;&#9472; Headline &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
-  .bx-headline {
-    text-align: center;
-    margin-bottom: 36px;
-  }
+  /* Headline */
+  .bx-headline { text-align: center; margin-bottom: 36px; }
   .bx-headline h2 {
     margin: 0 0 8px;
     font-size: 34px;
@@ -76,10 +77,10 @@
     line-height: 1.55;
   }
 
-  /* &#9472;&#9472; 3-card grid &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  /* 3-card grid */
   .bx-cards {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;   /* address card a bit wider */
+    grid-template-columns: 1.4fr 1fr 1fr;
     gap: 16px;
   }
   .bx-card {
@@ -96,10 +97,9 @@
     border-color: var(--bx-border-mid);
   }
 
-  /* Icon chip (top-left of each card) */
+  /* Icon chip */
   .bx-icon {
-    width: 44px;
-    height: 44px;
+    width: 44px; height: 44px;
     border-radius: 12px;
     display: inline-flex;
     align-items: center;
@@ -107,15 +107,12 @@
     margin-bottom: 14px;
     border: 1px solid;
   }
-  .bx-icon svg {
-    width: 20px; height: 20px;
-    display: block;
-  }
+  .bx-icon svg { width: 20px; height: 20px; display: block; }
   .bx-card.bx-addr  .bx-icon { background: var(--bx-blue-bg);    border-color: var(--bx-blue-line);    color: var(--bx-blue); }
   .bx-card.bx-wa    .bx-icon { background: var(--bx-emerald-bg); border-color: var(--bx-emerald-line); color: var(--bx-emerald); }
   .bx-card.bx-email .bx-icon { background: var(--bx-accent-bg);  border-color: var(--bx-accent-line);  color: var(--bx-accent); }
 
-  /* Heading inside each card */
+  /* Headings inside cards */
   .bx-card-label {
     font-size: 11px;
     font-weight: 800;
@@ -136,10 +133,14 @@
     font-size: 13.5px;
     line-height: 1.6;
     margin: 0 0 18px;
-    flex: 1;          /* push the CTA button to the bottom of the card */
+    flex: 1;
+  }
+  .bx-card-body strong {
+    color: var(--bx-text-hi);
+    font-weight: 700;
   }
 
-  /* CTA button at the bottom of each card */
+  /* CTA button */
   .bx-btn {
     display: inline-flex;
     align-items: center;
@@ -169,10 +170,36 @@
   .bx-card.bx-email .bx-btn { border-color: var(--bx-accent-line);  color: var(--bx-accent-2); }
   .bx-card.bx-email .bx-btn:hover { background: var(--bx-accent-bg); }
 
-  /* &#9472;&#9472; Footer strip (response time, hours) &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  /* Registered Office strip (legal compliance) */
+  .bx-registered {
+    margin-top: 16px;
+    padding: 14px 18px;
+    background: var(--bx-panel-alt);
+    border: 1px solid var(--bx-border);
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: baseline;
+    justify-content: center;
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--bx-text-md);
+    line-height: 1.55;
+  }
+  .bx-registered strong { color: var(--bx-text-hi); font-weight: 700; }
+  .bx-registered .bx-reg-sep {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--bx-text-lo);
+    opacity: 0.6;
+    align-self: center;
+    flex-shrink: 0;
+  }
+
+  /* Hours / response time footer */
   .bx-foot {
-    margin-top: 24px;
-    padding: 16px 20px;
+    margin-top: 12px;
+    padding: 14px 18px;
     background: var(--bx-panel-alt);
     border: 1px solid var(--bx-border);
     border-radius: 12px;
@@ -180,8 +207,8 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    font-size: 13px;
+    gap: 14px;
+    font-size: 12.5px;
     color: var(--bx-text-md);
     text-align: center;
   }
@@ -193,13 +220,13 @@
     flex-shrink: 0;
   }
 
-  /* &#9472;&#9472; Responsive: tablet (&#8804; 900px) &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  /* Tablet */
   @media (max-width: 900px) {
     .bx-cards { grid-template-columns: 1fr 1fr; }
-    .bx-card.bx-addr { grid-column: 1 / -1; }   /* address spans full row */
+    .bx-card.bx-addr { grid-column: 1 / -1; }
   }
 
-  /* &#9472;&#9472; Responsive: phone (&#8804; 600px) &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+  /* Phone */
   @media (max-width: 600px) {
     .bx-wrap        { padding: 16px; }
     .bx-headline h2 { font-size: 24px; }
@@ -208,27 +235,29 @@
     .bx-card        { padding: 20px; }
     .bx-card.bx-addr { grid-column: auto; }
     .bx-card-body   { font-size: 13px; }
-    .bx-foot {
+    .bx-foot,
+    .bx-registered {
       flex-direction: column;
-      gap: 8px;
-      font-size: 12.5px;
+      gap: 6px;
+      font-size: 12px;
     }
-    .bx-foot-sep { display: none; }
+    .bx-foot-sep,
+    .bx-reg-sep { display: none; }
   }
 </style>
 
 <div class="bx-wrap">
 
-  <!-- &#9472;&#9472; Headline &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
+  <!-- Headline -->
   <div class="bx-headline">
     <h2>Get in touch</h2>
     <p>We&rsquo;re here to help with anything about your AI agents &mdash; setup, billing, integrations, anything else.</p>
   </div>
 
-  <!-- &#9472;&#9472; Three contact cards &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
+  <!-- Three contact cards -->
   <div class="bx-cards">
 
-    <!-- Address -->
+    <!-- Address: Ahmedabad operating office -->
     <div class="bx-card bx-addr">
       <span class="bx-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -237,7 +266,7 @@
         </svg>
       </span>
       <p class="bx-card-label">Visit us</p>
-      <p class="bx-card-title">Brainam HQ &middot; Ahmedabad</p>
+      <p class="bx-card-title">Brainam &middot; Ahmedabad Office</p>
       <p class="bx-card-body">
         G-802, Adani Archway, FP 19, TP 34,<br>
         Sarkhej &ndash; Gandhinagar Highway,<br>
@@ -264,7 +293,7 @@
       <p class="bx-card-body">
         Fastest way to reach the team. We typically reply within a few minutes during work hours.
         <br><br>
-        <strong style="color: var(--bx-text-hi); font-weight: 700;">+91 70412 07187</strong>
+        <strong>+91 70412 07187</strong>
       </p>
       <a class="bx-btn"
          href="https://wa.me/917041207187"
@@ -286,7 +315,7 @@
       <p class="bx-card-body">
         For longer questions, partnerships, or anything that needs a paper trail. We respond within one business day.
         <br><br>
-        <strong style="color: var(--bx-text-hi); font-weight: 700;">hello@brainam.ai</strong>
+        <strong>hello@brainam.ai</strong>
       </p>
       <a class="bx-btn" href="mailto:hello@brainam.ai">
         Send an email <span class="bx-btn-arrow">&rarr;</span>
@@ -295,13 +324,59 @@
 
   </div>
 
-  <!-- &#9472;&#9472; Footer strip &#8212; hours + region &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
+  <!-- Registered Office disclosure strip (legal compliance) -->
+  <div class="bx-registered">
+    <span><strong>Operated by:</strong> Taku Ventures Private Limited</span>
+    <span class="bx-reg-sep" aria-hidden="true"></span>
+    <span><strong>CIN:</strong> U79110DL2024PTC431506</span>
+    <span class="bx-reg-sep" aria-hidden="true"></span>
+    <span><strong>GSTIN:</strong> 07AALCT0078R1ZL</span>
+    <span class="bx-reg-sep" aria-hidden="true"></span>
+    <span><strong>Registered Office:</strong> F-12, Gali No.1, Shyam Vihar Ph-1, Najafgarh, New Delhi - 110043</span>
+  </div>
+
+  <!-- Hours strip -->
   <div class="bx-foot">
     <span><strong>Monday &ndash; Saturday</strong>, 10 AM &ndash; 7 PM IST</span>
     <span class="bx-foot-sep" aria-hidden="true"></span>
-    <span>We typically reply on WhatsApp within minutes</span>
+    <span>WhatsApp replies in minutes during work hours</span>
     <span class="bx-foot-sep" aria-hidden="true"></span>
     <span>Email within one business day</span>
   </div>
 
 </div>
+
+<!--
+  Auto-resize broadcaster. Tells the parent Framer page how tall this
+  iframe wants to be, so the embed can be set to "Fit Content" and
+  resize without scroll bars or clipping.
+  Envelope: { source: 'brainam-contact', type: 'brainam:resize', height: N }
+-->
+<script>
+(function () {
+  function measure() {
+    var d = document, b = d.body, h = d.documentElement;
+    return Math.max(
+      b.scrollHeight, b.offsetHeight,
+      h.scrollHeight, h.offsetHeight, h.clientHeight
+    );
+  }
+  var lastSent = -1;
+  function send(force) {
+    var h = measure();
+    if (!force && Math.abs(h - lastSent) < 4) return;
+    lastSent = h;
+    try {
+      window.parent.postMessage({
+        source: 'brainam-contact',
+        type:   'brainam:resize',
+        height: h
+      }, '*');
+    } catch (e) { /* parent unreachable */ }
+  }
+  if (document.readyState === 'complete') send(true);
+  else window.addEventListener('load', function () { send(true); });
+  window.addEventListener('resize', function () { send(false); });
+  setInterval(function () { send(false); }, 350);
+})();
+</script>
