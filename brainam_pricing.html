@@ -102,7 +102,7 @@
   }
 
   /* ── Tab bar (CSS-controlled by hidden radios) ─────────────── */
-  .bp-tabs-radios { display: none; }
+  .bp-wrap > input[type="radio"][name="bp-tabs"] { position: absolute; opacity: 0; pointer-events: none; }
 
   .bp-tabbar {
     display: flex;
@@ -669,14 +669,17 @@
 
 <div class="bp-wrap">
 
-  <!-- Hidden radios drive tab state. MUST come before .bp-tabbar + .bp-panels
-       so the ~ sibling selector can reach both. -->
-  <div class="bp-tabs-radios">
-    <input type="radio" name="bp-tabs" id="bp-tab-packages" checked />
-    <input type="radio" name="bp-tabs" id="bp-tab-chips" />
-    <input type="radio" name="bp-tabs" id="bp-tab-byok" />
-    <input type="radio" name="bp-tabs" id="bp-tab-usage" />
-  </div>
+  <!-- Hidden radios drive tab state.
+       MUST be direct children of .bp-wrap (NOT wrapped in another div)
+       so the `~` general-sibling combinator can reach .bp-tabbar and
+       .bp-panels later in the tree. Previously these lived inside a
+       .bp-tabs-radios wrapper which broke the selector — :checked could
+       see siblings inside the wrapper but not the panels outside it,
+       so every tab click left the panel area blank. -->
+  <input type="radio" name="bp-tabs" id="bp-tab-packages" checked />
+  <input type="radio" name="bp-tabs" id="bp-tab-chips" />
+  <input type="radio" name="bp-tabs" id="bp-tab-byok" />
+  <input type="radio" name="bp-tabs" id="bp-tab-usage" />
 
   <!-- Headline -->
   <div class="bp-headline">
@@ -687,19 +690,19 @@
   <!-- Tab bar -->
   <div class="bp-tabbar">
     <label class="bp-tab-label" for="bp-tab-packages">
-      <span class="bp-tab-icon">&#9876;</span>
+      <span class="bp-tab-icon">&#127918;</span>
       Pick Your Build
     </label>
     <label class="bp-tab-label" for="bp-tab-chips">
-      <span class="bp-tab-icon">&#129689;</span>
+      <span class="bp-tab-icon">&#129689;&#65039;</span>
       Chips
     </label>
     <label class="bp-tab-label" for="bp-tab-byok">
-      <span class="bp-tab-icon">&#128273;</span>
+      <span class="bp-tab-icon">&#128273;&#65039;</span>
       BYOK
     </label>
     <label class="bp-tab-label" for="bp-tab-usage">
-      <span class="bp-tab-icon">&#9881;</span>
+      <span class="bp-tab-icon">&#128202;</span>
       Usage
     </label>
   </div>
