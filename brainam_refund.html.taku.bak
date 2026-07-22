@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brainam &mdash; Refund &amp; Cancellation Policy</title>
+<!--
+  Brainam · Refund & Cancellation Policy
+  -------------------------------------------------------------
+  Dark theme matching the Brainam site root colour #08070e.
+  Scoped via .br- prefix so it can coexist with the other Brainam
+  embeds. Pure ASCII (HTML entities) so it survives any paste path.
+
+  IMPORTANT: do NOT open this file in TextEdit. TextEdit will silently
+  flatten the HTML into Cocoa rich-text and break the structure.
+  Open with VS Code (or any real code editor) only.
+  -------------------------------------------------------------
+-->
+<style>
+  .br-root, .br-root * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .br-root {
+    background: transparent;
+    color: #e8e6f0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    padding: 48px 24px 80px;
+  }
+
+  .br-wrap { max-width: 880px; margin: 0 auto; }
+
+  /* Header */
+  .br-header { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .br-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a08fff;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .br-title {
+    font-size: 38px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .br-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    font-size: 13px;
+    color: rgba(232,230,240,0.6);
+  }
+  .br-meta span strong { color: rgba(232,230,240,0.9); font-weight: 600; }
+
+  /* Intro */
+  .br-intro {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 24px 26px;
+    margin-bottom: 40px;
+  }
+  .br-intro p { color: rgba(232,230,240,0.85); }
+  .br-intro p + p { margin-top: 12px; }
+  .br-intro strong { color: #ffffff; font-weight: 600; }
+
+  /* TOC */
+  .br-toc {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 48px;
+  }
+  .br-toc-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #a08fff;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .br-toc ol {
+    list-style: none;
+    counter-reset: br-toc;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 28px;
+  }
+  .br-toc ol li { counter-increment: br-toc; font-size: 14px; }
+  .br-toc ol li::before {
+    content: counter(br-toc) ".";
+    color: rgba(160,143,255,0.7);
+    margin-right: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .br-toc a { color: rgba(232,230,240,0.78); text-decoration: none; transition: color .15s ease; }
+  .br-toc a:hover { color: #ffffff; }
+
+  /* Sections */
+  .br-section { margin-bottom: 44px; scroll-margin-top: 24px; }
+  .br-section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .br-section h2 .br-num {
+    color: rgba(160,143,255,0.85);
+    font-weight: 600;
+    margin-right: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+  .br-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.94);
+    margin-top: 22px;
+    margin-bottom: 10px;
+  }
+  .br-section p { color: rgba(232,230,240,0.82); margin-bottom: 12px; }
+  .br-section p strong { color: #ffffff; font-weight: 600; }
+  .br-section a {
+    color: #b9a8ff;
+    text-decoration: underline;
+    text-decoration-color: rgba(185,168,255,0.4);
+    text-underline-offset: 3px;
+  }
+  .br-section a:hover { color: #d4c5ff; }
+  .br-section code {
+    background: rgba(255,255,255,0.06);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    color: #d6cefb;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  /* Lists */
+  .br-section ul { list-style: none; margin: 8px 0 14px; padding: 0; }
+  .br-section ul li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 8px;
+    color: rgba(232,230,240,0.82);
+  }
+  .br-section ul li::before {
+    content: "\2022";
+    position: absolute;
+    left: 6px;
+    color: rgba(160,143,255,0.7);
+  }
+  .br-section ul li strong { color: #ffffff; }
+
+  .br-list-yes li::before { content: "\2713"; color: #7ee3a8; }
+  .br-list-no li::before { content: "\2715"; color: #ff8c93; }
+
+  /* Callout */
+  .br-callout {
+    border-left: 3px solid #a08fff;
+    background: rgba(160,143,255,0.06);
+    padding: 16px 18px;
+    border-radius: 0 10px 10px 0;
+    margin: 16px 0 18px;
+  }
+  .br-callout p { color: rgba(232,230,240,0.92); margin-bottom: 0; }
+  .br-callout p + p { margin-top: 10px; }
+
+  .br-warn {
+    border-left: 3px solid #ff8c93;
+    background: rgba(255,140,147,0.06);
+    padding: 16px 18px;
+    border-radius: 0 10px 10px 0;
+    margin: 16px 0 18px;
+  }
+  .br-warn p { color: rgba(232,230,240,0.92); margin-bottom: 0; }
+
+  /* Table */
+  .br-table-wrap { overflow-x: auto; margin: 16px 0 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); }
+  .br-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 540px; }
+  .br-table thead th {
+    background: rgba(255,255,255,0.04);
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .br-table tbody td {
+    padding: 12px 14px;
+    color: rgba(232,230,240,0.82);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    vertical-align: top;
+  }
+  .br-table tbody tr:last-child td { border-bottom: none; }
+  .br-table tbody td strong { color: #ffffff; font-weight: 600; }
+
+  /* Contact grid */
+  .br-contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .br-contact-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .br-contact-card .br-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(160,143,255,0.85);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .br-contact-card .br-value { font-size: 14px; color: #ffffff; word-break: break-word; line-height: 1.5; }
+
+  /* Email template block */
+  .br-email-template {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 18px 20px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 13px;
+    color: rgba(232,230,240,0.85);
+    line-height: 1.7;
+    margin: 14px 0 18px;
+    white-space: pre-wrap;
+  }
+
+  /* Legal strip */
+  .br-legal-strip {
+    margin-top: 22px;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    text-align: center;
+    font-size: 12.5px;
+    color: rgba(232,230,240,0.78);
+    line-height: 1.6;
+  }
+  .br-legal-strip strong { color: #ffffff; font-weight: 700; }
+
+  /* Footer */
+  .br-footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 12px;
+    color: rgba(232,230,240,0.5);
+    text-align: center;
+  }
+  .br-footer p + p { margin-top: 6px; }
+
+  @media (max-width: 720px) {
+    .br-root { padding: 32px 18px 60px; font-size: 14px; }
+    .br-title { font-size: 30px; }
+    .br-section h2 { font-size: 19px; }
+    .br-toc ol { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="br-root">
+<div class="br-wrap">
+
+  <!-- HEADER -->
+  <header class="br-header">
+    <div class="br-eyebrow">Legal</div>
+    <h1 class="br-title">Refund &amp; Cancellation Policy</h1>
+    <div class="br-meta">
+      <span><strong>Effective:</strong> 23 May 2026</span>
+      <span><strong>Last updated:</strong> 23 May 2026</span>
+      <span><strong>Version:</strong> 1.0</span>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <div class="br-intro">
+    <p>At Brainam (&ldquo;Brainam&rdquo;, &ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;our&rdquo; or &ldquo;us&rdquo;) &mdash; a product operated by <strong>Taku Ventures Private Limited</strong> (CIN: <strong>U79110DL2024PTC431506</strong>, GSTIN: <strong>07AALCT0078R1ZL</strong>) &mdash; we want our customers to understand exactly when refunds are possible, when they are not, and how cancellations work. This Refund &amp; Cancellation Policy explains all of that for the services offered through <strong>https://brainam.ai</strong> (the &ldquo;Services&rdquo;).</p>
+    <p>By purchasing or using the Services, you agree to this Policy in addition to our <a href="https://brainam.ai/terms">Terms &amp; Conditions</a> and <a href="https://brainam.ai/privacy">Privacy Policy</a>. This Policy is in addition to, and does not limit, any statutory rights you may have under the <strong>Consumer Protection Act, 2019</strong> and the <strong>Consumer Protection (E-Commerce) Rules, 2020</strong>.</p>
+  </div>
+
+  <!-- TOC -->
+  <nav class="br-toc">
+    <div class="br-toc-title">Table of contents</div>
+    <ol>
+      <li><a href="#br-s1">Overview &amp; scope</a></li>
+      <li><a href="#br-s2">What we sell</a></li>
+      <li><a href="#br-s3">Digital delivery</a></li>
+      <li><a href="#br-s4">Refund eligibility</a></li>
+      <li><a href="#br-s5">What is non-refundable</a></li>
+      <li><a href="#br-s6">Promotional chips</a></li>
+      <li><a href="#br-s7">How to request a refund</a></li>
+      <li><a href="#br-s8">Refund processing &amp; timelines</a></li>
+      <li><a href="#br-s9">Cancellation</a></li>
+      <li><a href="#br-s10">Chargebacks &amp; disputes</a></li>
+      <li><a href="#br-s11">Service interruptions</a></li>
+      <li><a href="#br-s12">Changes to this Policy</a></li>
+      <li><a href="#br-s13">Grievance Officer &amp; contact</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section class="br-section" id="br-s1">
+    <h2><span class="br-num">1.</span>Overview &amp; scope</h2>
+    <p>Brainam is a digital AI agent platform. The Services are delivered electronically and, in most cases, consumed immediately upon use. Because of this, refunds are limited to specific situations described below.</p>
+    <p>This Policy applies to all payments made to Brainam, whether through Razorpay, UPI, debit / credit cards, net banking, wallets, or any other payment method we support.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="br-section" id="br-s2">
+    <h2><span class="br-num">2.</span>What we sell</h2>
+    <p>Brainam offers the following paid products. Refund rules differ slightly by product, so it is important to know what you have purchased.</p>
+
+    <div class="br-table-wrap">
+      <table class="br-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>What it is</th>
+            <th>Billing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Chip top-up</strong></td>
+            <td>A one-time, lifetime purchase of Chips used to power agent runs.</td>
+            <td>One-time. Currently &#8377;499 / &#8377;999 / &#8377;1,499 / &#8377;1,999 packs.</td>
+          </tr>
+          <tr>
+            <td><strong>BYOK &mdash; Monthly</strong></td>
+            <td>Bring-Your-Own-Key subscription per agent (you connect your own AI provider keys).</td>
+            <td>&#8377;999 per agent, billed monthly, auto-renews.</td>
+          </tr>
+          <tr>
+            <td><strong>BYOK &mdash; Lifetime</strong></td>
+            <td>Lifetime BYOK access per agent.</td>
+            <td>&#8377;4,999 per agent, one-time.</td>
+          </tr>
+          <tr>
+            <td><strong>Promotional Chips</strong></td>
+            <td>Free Chips granted as part of an offer (e.g. 50,000 sign-up bonus).</td>
+            <td>Free. Not a paid product.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Pricing is displayed in &#8377; (INR) on the pricing page and at checkout. All fees are exclusive of applicable taxes (including GST) unless stated otherwise.</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="br-section" id="br-s3">
+    <h2><span class="br-num">3.</span>Digital delivery</h2>
+    <div class="br-callout">
+      <p>Brainam is a digital service. Chips and BYOK access are delivered electronically and made available in your Brainam Account within minutes of successful payment. <strong>There is no physical shipment.</strong> If your purchase is not reflected in your Account within 48 hours of payment confirmation, please contact <a href="mailto:hello@brainam.ai">hello@brainam.ai</a> with your transaction ID and we will resolve it on priority.</p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="br-section" id="br-s4">
+    <h2><span class="br-num">4.</span>Refund eligibility</h2>
+    <p>Because Chips and BYOK access are delivered and can be consumed immediately, all payments are <strong>generally non-refundable</strong> once the underlying Service has been provisioned or used. Refunds will, however, be considered in the following limited circumstances:</p>
+
+    <h3>4.1 Eligible cases (any product)</h3>
+    <ul class="br-list-yes">
+      <li><strong>Duplicate payment</strong> &mdash; you were charged more than once for the same purchase due to a system error.</li>
+      <li><strong>Unauthorised transaction</strong> &mdash; a charge appears on your statement that you did not authorise, verified by our security team.</li>
+      <li><strong>Failed delivery</strong> &mdash; payment succeeded but the corresponding Chips or BYOK access were not credited to your Account within 48 hours and could not be restored by our support team.</li>
+      <li><strong>Billing error</strong> &mdash; you were charged an incorrect amount due to a verified systemic invoicing or billing error.</li>
+      <li><strong>Termination by Brainam without cause</strong> &mdash; if we terminate your Account without you being in breach of our Terms, we will refund unconsumed Chips purchased in the preceding 12 months on a pro-rata basis.</li>
+    </ul>
+
+    <h3>4.2 Product-specific refund windows</h3>
+    <p>For any refund request, you must apply within the window below <strong>and</strong> meet the &ldquo;not consumed&rdquo; condition for that product:</p>
+
+    <div class="br-table-wrap">
+      <table class="br-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Refund window</th>
+            <th>Additional condition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Chip top-up</strong></td>
+            <td>7 days from purchase</td>
+            <td><strong>Zero Chips consumed</strong> from that purchase.</td>
+          </tr>
+          <tr>
+            <td><strong>BYOK Monthly</strong></td>
+            <td>48 hours from first activation of each monthly cycle</td>
+            <td><strong>Zero agent runs</strong> executed in that cycle.</td>
+          </tr>
+          <tr>
+            <td><strong>BYOK Lifetime</strong></td>
+            <td>7 days from activation</td>
+            <td><strong>Zero agent runs</strong> executed with that BYOK key.</td>
+          </tr>
+          <tr>
+            <td><strong>Promotional Chips</strong></td>
+            <td>Never refundable for cash</td>
+            <td>&mdash;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="br-section" id="br-s5">
+    <h2><span class="br-num">5.</span>What is non-refundable</h2>
+    <p>Refunds will <strong>not</strong> be issued in the following situations:</p>
+    <ul class="br-list-no">
+      <li>Change of mind, change in business need, or a decision to switch to another tool.</li>
+      <li>Chips that have already been consumed (in whole or in part), including by failed or partially successful agent runs.</li>
+      <li>BYOK Monthly fees for any month in which one or more agent runs have already been executed.</li>
+      <li>Promotional Chips, sign-up bonuses, free credits, or any chips not purchased with money.</li>
+      <li>Dissatisfaction with the accuracy, phrasing, tone, or quality of AI-generated output (please review the AI disclaimer in our Terms).</li>
+      <li>Account suspension or termination due to your breach of the Terms or Acceptable Use Policy.</li>
+      <li>Discount value granted under a coupon, sale or partner offer (the underlying chip pack still follows the refund window above).</li>
+      <li>Failure to cancel a BYOK Monthly subscription before its renewal date.</li>
+      <li>Enterprise onboarding, custom setup, integration consulting, or training services that have already been delivered.</li>
+      <li>Charges, fees, or overages billed directly by a third-party AI provider when you use BYOK with your own API keys.</li>
+    </ul>
+  </section>
+
+  <!-- 6 -->
+  <section class="br-section" id="br-s6">
+    <h2><span class="br-num">6.</span>Promotional chips</h2>
+    <p>Brainam may grant promotional Chips from time to time, including a sign-up bonus of up to <strong>50,000 Promotional Chips</strong>. These are provided for evaluation and promotional purposes only and are subject to the following terms (in addition to the rules in our Terms &amp; Conditions, Section 8):</p>
+    <ul>
+      <li>Promotional Chips have <strong>no cash value</strong>, are non-transferable, and cannot be exchanged for fiat currency or refunded.</li>
+      <li>Promotional Chips may expire on a date specified at the time of the offer.</li>
+      <li>Where your Account holds both Paid and Promotional Chips, <strong>Promotional Chips are consumed first</strong>, unless we indicate otherwise.</li>
+      <li>Promotional Chips are limited to <strong>one offer per individual and per business entity</strong>. Creation of multiple accounts to claim the bonus is prohibited.</li>
+      <li>We may modify, suspend or revoke Promotional Chips at any time in cases of suspected abuse, fraud, or breach of Terms.</li>
+      <li>Any unused Promotional Chips at the time of Account closure are <strong>permanently forfeited</strong>.</li>
+    </ul>
+  </section>
+
+  <!-- 7 -->
+  <section class="br-section" id="br-s7">
+    <h2><span class="br-num">7.</span>How to request a refund</h2>
+    <p>To request a refund under Section 4.1, please email us at <a href="mailto:hello@brainam.ai">hello@brainam.ai</a> within the applicable refund window, with the following details:</p>
+    <ul>
+      <li>Your registered Account email address.</li>
+      <li>The Razorpay transaction ID or invoice number.</li>
+      <li>The exact date and amount of the charge.</li>
+      <li>The product purchased (chip top-up pack, BYOK monthly, or BYOK lifetime).</li>
+      <li>A clear reason for the request, with screenshots if you are reporting a system failure.</li>
+    </ul>
+
+    <p>You can copy the template below to save time:</p>
+    <div class="br-email-template">To: hello@brainam.ai
+Subject: Refund Request &mdash; [Transaction ID]
+
+- Account email: [your email]
+- Transaction ID: [from Razorpay receipt]
+- Date &amp; amount: [DD MMM YYYY] &middot; INR [amount]
+- Product: [Chip top-up / BYOK Monthly / BYOK Lifetime]
+- Reason: [duplicate / unauthorised / failed delivery / billing error / other]
+- Additional details: [optional]
+</div>
+
+    <p>Our team will acknowledge your request within <strong>2 business days</strong> and provide a decision within <strong>7 business days</strong>.</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="br-section" id="br-s8">
+    <h2><span class="br-num">8.</span>Refund processing &amp; timelines</h2>
+    <p>Approved refunds are issued only to the <strong>original payment method</strong> used for the purchase. We do not issue refunds as cash, bank transfers to unrelated accounts, or as additional Chips unless you agree in writing.</p>
+
+    <h3>8.1 Timelines (domestic / India)</h3>
+    <ul>
+      <li>Refund initiated to Razorpay: <strong>within 7 business days</strong> of approval.</li>
+      <li>Razorpay credits the refund to your bank or card: typically <strong>5&ndash;7 business days</strong> from initiation.</li>
+      <li>Your bank may take an additional <strong>2&ndash;4 days</strong> to reflect the credit on your statement.</li>
+    </ul>
+
+    <h3>8.2 Timelines (international)</h3>
+    <p>For international cards or non-INR payment methods, processing may take an additional 5&ndash;10 business days depending on the issuing bank and intermediate clearinghouses. Brainam is not responsible for delays caused by banks or banking holidays.</p>
+
+    <h3>8.3 GST &amp; taxes on refunds</h3>
+    <p>Where a refund is approved, the refund amount will include applicable GST originally charged. A GST credit note will be issued where required by Indian tax law.</p>
+  </section>
+
+  <!-- 9 -->
+  <section class="br-section" id="br-s9">
+    <h2><span class="br-num">9.</span>Cancellation</h2>
+
+    <h3>9.1 BYOK Monthly subscription</h3>
+    <p>You can cancel a BYOK Monthly subscription at any time by:</p>
+    <ul>
+      <li>Going to <strong>Settings &rarr; Billing &rarr; Manage BYOK</strong> inside your Brainam Account, and clicking <strong>Cancel</strong>; or</li>
+      <li>Emailing <a href="mailto:hello@brainam.ai">hello@brainam.ai</a> at least <strong>48 hours before</strong> your next renewal date.</li>
+    </ul>
+    <p>After cancellation:</p>
+    <ul>
+      <li>Your BYOK access remains active until the end of the current paid billing cycle.</li>
+      <li>No partial or pro-rated refund is issued for the remaining days of that cycle.</li>
+      <li>The subscription will not renew, and you will not be charged again.</li>
+    </ul>
+
+    <h3>9.2 Chip top-up &amp; BYOK Lifetime</h3>
+    <p>Chip top-ups and BYOK Lifetime purchases are one-time payments and do not need to be cancelled. They can only be refunded if they meet the criteria in Section 4.</p>
+
+    <h3>9.3 Account closure</h3>
+    <p>You can close your entire Brainam Account at any time by going to <strong>Settings &rarr; Account &rarr; Delete Account</strong>, or by emailing <a href="mailto:hello@brainam.ai">hello@brainam.ai</a>. Upon account closure:</p>
+    <ul>
+      <li>All unconsumed Paid Chips and Promotional Chips are <strong>forfeited</strong> and become non-refundable.</li>
+      <li>Active BYOK Monthly subscriptions are cancelled at the end of the current cycle (no further charges).</li>
+      <li>You will have a <strong>30-day window</strong> to export your data before permanent deletion (see our Privacy Policy for details).</li>
+    </ul>
+  </section>
+
+  <!-- 10 -->
+  <section class="br-section" id="br-s10">
+    <h2><span class="br-num">10.</span>Chargebacks &amp; payment disputes</h2>
+    <div class="br-warn">
+      <p>You agree to contact us at <a href="mailto:hello@brainam.ai">hello@brainam.ai</a> <strong>before</strong> raising a chargeback or payment dispute with your bank, card issuer, UPI provider, or Razorpay. We are committed to resolving billing queries amicably and most issues can be resolved within a few business days.</p>
+    </div>
+    <p>A chargeback raised without first contacting Brainam may result in:</p>
+    <ul>
+      <li>Immediate suspension of your Account pending investigation.</li>
+      <li>Forfeiture of remaining Chips (Paid and Promotional).</li>
+      <li>Recovery of legal, administrative, and chargeback-handling costs from you.</li>
+      <li>Permanent termination of your Account and inclusion on our internal fraud-prevention list.</li>
+    </ul>
+  </section>
+
+  <!-- 11 -->
+  <section class="br-section" id="br-s11">
+    <h2><span class="br-num">11.</span>Service interruptions</h2>
+    <p>Temporary interruptions, scheduled maintenance, dependency outages (e.g. AI provider downtime, Razorpay downtime, hosting issues), and brief errors do <strong>not</strong> automatically qualify for refunds. We use commercially reasonable efforts to maintain availability but the Services are provided on an as-is and as-available basis (see Terms &amp; Conditions, Section 14).</p>
+    <p>If an outage attributable solely to Brainam prevents you from accessing paid Services for a continuous period of more than <strong>72 hours</strong>, you may write to us at <a href="mailto:hello@brainam.ai">hello@brainam.ai</a> and we will review the impact and, where appropriate, credit additional Chips to your Account by way of goodwill.</p>
+  </section>
+
+  <!-- 12 -->
+  <section class="br-section" id="br-s12">
+    <h2><span class="br-num">12.</span>Changes to this Policy</h2>
+    <p>We may update this Policy from time to time to reflect changes in our pricing, products, or applicable law. Updated versions will be published on this page with a revised &ldquo;Last Updated&rdquo; date. Material changes will be notified to you by email or in-product banner at least <strong>30 days</strong> in advance. Your continued use of the Services after a change takes effect constitutes acceptance of the updated Policy.</p>
+  </section>
+
+  <!-- 13 -->
+  <section class="br-section" id="br-s13">
+    <h2><span class="br-num">13.</span>Grievance Officer &amp; contact</h2>
+    <p>For any refund, cancellation, or billing query, please contact us at <a href="mailto:hello@brainam.ai">hello@brainam.ai</a>.</p>
+    <p>If your concern is not resolved to your satisfaction, you may escalate to our Grievance Officer, appointed under the <strong>Consumer Protection (E-Commerce) Rules, 2020</strong> and the <strong>Information Technology (Intermediary Guidelines) Rules, 2021</strong>:</p>
+    <div class="br-contact-grid">
+      <div class="br-contact-card">
+        <div class="br-label">Grievance Officer</div>
+        <div class="br-value">Sachin Arora</div>
+      </div>
+      <div class="br-contact-card">
+        <div class="br-label">Email</div>
+        <div class="br-value">grievance@brainam.ai</div>
+      </div>
+      <div class="br-contact-card">
+        <div class="br-label">Office Address</div>
+        <div class="br-value">Taku Ventures Private Limited,<br>Shop No. 313, 3rd Floor, Aggarwal Square Plaza, Pocket 7, Plot - 8,Dwarka Sector 12,<br>New Delhi, Delhi 110078</div>
+      </div>
+      <div class="br-contact-card">
+        <div class="br-label">Response Time</div>
+        <div class="br-value">Acknowledgement within 48 hours; resolution within 30 days.</div>
+      </div>
+    </div>
+
+    <h3>General contact</h3>
+    <div class="br-contact-grid">
+      <div class="br-contact-card">
+        <div class="br-label">Refund &amp; billing</div>
+        <div class="br-value">hello@brainam.ai</div>
+      </div>
+      <div class="br-contact-card">
+        <div class="br-label">Privacy &amp; grievance</div>
+        <div class="br-value">grievance@brainam.ai</div>
+      </div>
+      <div class="br-contact-card">
+        <div class="br-label">Website</div>
+        <div class="br-value">brainam.ai</div>
+      </div>
+      <div class="br-contact-card">
+        <div class="br-label">Payment partner</div>
+        <div class="br-value">Razorpay Software Pvt Ltd</div>
+      </div>
+    </div>
+
+    <!-- Entity disclosure strip -->
+    <div class="br-legal-strip">
+      <strong>Operated by:</strong> Taku Ventures Private Limited &middot;
+      <strong>CIN:</strong> U79110DL2024PTC431506 &middot;
+      <strong>GSTIN:</strong> 07AALCT0078R1ZL<br>
+      <strong>Operating Office:</strong> Shop No. 313, 3rd Floor, Aggarwal Square Plaza, Pocket 7, Plot - 8,Dwarka Sector 12,New Delhi, Delhi 110078 &middot;
+      <strong>Registered Office:</strong> F-12, Gali No. 1, Shyam Vihar Ph-1, Najafgarh, New Delhi - 110043
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="br-footer">
+    <p>This Policy is governed by the laws of the Republic of India and is read together with our <a href="https://brainam.ai/terms" style="color:rgba(232,230,240,0.7);">Terms &amp; Conditions</a> and <a href="https://brainam.ai/privacy" style="color:rgba(232,230,240,0.7);">Privacy Policy</a>.</p>
+    <p>&copy; 2026 Taku Ventures Private Limited (operating the Brainam product) &middot; Version 1.0 &middot; Last updated 23 May 2026</p>
+  </footer>
+
+</div>
+</div>
+
+<!--
+  Combined script:
+  1. Link-breakout: external links navigate the parent Framer window
+     (target=_top) so URL bars update correctly. Internal hash links
+     stay in-iframe so the TOC keeps working.
+  2. Auto-resize broadcaster: tells Framer the iframe height so the
+     embed can be set to "Fit Content".
+-->
+<script>
+(function () {
+  function breakoutLinks() {
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (href && !href.startsWith('#') && !a.hasAttribute('target')) {
+        a.setAttribute('target', '_top');
+      }
+    });
+  }
+
+  function measure() {
+    var d = document, b = d.body, h = d.documentElement;
+    return Math.max(
+      b.scrollHeight, b.offsetHeight,
+      h.scrollHeight, h.offsetHeight, h.clientHeight
+    );
+  }
+  var lastSent = -1;
+  function send(force) {
+    var h = measure();
+    if (!force && Math.abs(h - lastSent) < 4) return;
+    lastSent = h;
+    try {
+      window.parent.postMessage({
+        source: 'brainam-refund',
+        type:   'brainam:resize',
+        height: h
+      }, '*');
+    } catch (e) { /* parent unreachable */ }
+  }
+
+  function init() {
+    breakoutLinks();
+    send(true);
+  }
+  if (document.readyState === 'complete') init();
+  else window.addEventListener('load', init);
+
+  window.addEventListener('resize', function () { send(false); });
+  setInterval(function () { send(false); }, 350);
+})();
+</script>
+</body>
+</html>

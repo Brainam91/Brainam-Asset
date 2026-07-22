@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brainam &mdash; Data Deletion Request</title>
+<!--
+  Brainam · Data Deletion Request
+  -------------------------------------------------------------
+  Dark theme matching the Brainam site root colour #08070e.
+  Scoped via .bd- prefix.
+
+  Form: AJAX submission to Web3Forms.
+  Submissions arrive at grievance@brainam.ai with the access key
+  baked in below. Users see an inline success / error message
+  without leaving the page — works correctly inside Framer iframe.
+
+  IMPORTANT: do NOT open this file in TextEdit. Use VS Code or any
+  real code editor. To upload to GitHub, drag-and-drop directly
+  from Desktop into the GitHub web upload dialog.
+  -------------------------------------------------------------
+-->
+<style>
+  .bd-root, .bd-root * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .bd-root {
+    background: transparent;
+    color: #e8e6f0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    padding: 48px 24px 80px;
+  }
+
+  .bd-wrap { max-width: 760px; margin: 0 auto; }
+
+  /* Header */
+  .bd-header { margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .bd-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a08fff;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .bd-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .bd-subtitle {
+    font-size: 16px;
+    color: rgba(232,230,240,0.7);
+    line-height: 1.55;
+    max-width: 620px;
+  }
+
+  /* Sections */
+  .bd-section { margin-bottom: 36px; scroll-margin-top: 24px; }
+  .bd-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .bd-section h2 .bd-num {
+    color: rgba(160,143,255,0.85);
+    font-weight: 600;
+    margin-right: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+  .bd-section h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.94);
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+  .bd-section p { color: rgba(232,230,240,0.82); margin-bottom: 10px; }
+  .bd-section p strong { color: #ffffff; font-weight: 600; }
+  .bd-section a {
+    color: #b9a8ff;
+    text-decoration: underline;
+    text-decoration-color: rgba(185,168,255,0.4);
+    text-underline-offset: 3px;
+  }
+  .bd-section a:hover { color: #d4c5ff; }
+
+  /* Lists */
+  .bd-section ul { list-style: none; margin: 8px 0 12px; padding: 0; }
+  .bd-section ul li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 6px;
+    color: rgba(232,230,240,0.82);
+  }
+  .bd-section ul li::before {
+    content: "\2022";
+    position: absolute;
+    left: 6px;
+    color: rgba(160,143,255,0.7);
+  }
+  .bd-section ul li strong { color: #ffffff; }
+
+  .bd-list-yes li::before { content: "\2713"; color: #7ee3a8; }
+  .bd-list-no li::before { content: "\2715"; color: #ff8c93; }
+
+  /* Three-option cards */
+  .bd-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 14px 0 20px;
+  }
+  .bd-option {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .bd-option .bd-opt-num {
+    display: inline-block;
+    background: rgba(160,143,255,0.15);
+    color: #d4c5ff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .bd-option h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 6px;
+  }
+  .bd-option p {
+    font-size: 13px;
+    color: rgba(232,230,240,0.72);
+    line-height: 1.55;
+  }
+
+  /* Callout */
+  .bd-callout {
+    border-left: 3px solid #a08fff;
+    background: rgba(160,143,255,0.06);
+    padding: 14px 16px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0 18px;
+  }
+  .bd-callout p { color: rgba(232,230,240,0.92); margin-bottom: 0; }
+  .bd-callout p + p { margin-top: 8px; }
+
+  /* FORM */
+  .bd-form-wrap {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 24px 26px;
+    margin-bottom: 36px;
+  }
+  .bd-form-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+  .bd-form-sub {
+    font-size: 13px;
+    color: rgba(232,230,240,0.6);
+    margin-bottom: 20px;
+  }
+  .bd-form-row { margin-bottom: 16px; }
+  .bd-form-row label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 6px;
+  }
+  .bd-form-row label .bd-req { color: #ff8c93; margin-left: 3px; }
+  .bd-form-row label .bd-opt {
+    font-weight: 400;
+    color: rgba(232,230,240,0.5);
+    font-size: 12px;
+    margin-left: 6px;
+  }
+  .bd-form-row input[type="text"],
+  .bd-form-row input[type="email"],
+  .bd-form-row textarea {
+    width: 100%;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 11px 14px;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .bd-form-row input[type="text"]:focus,
+  .bd-form-row input[type="email"]:focus,
+  .bd-form-row textarea:focus {
+    outline: none;
+    border-color: rgba(160,143,255,0.5);
+    background: rgba(0,0,0,0.35);
+  }
+  .bd-form-row textarea { resize: vertical; min-height: 90px; }
+
+  /* Radio group */
+  .bd-radio-group { display: flex; flex-direction: column; gap: 8px; }
+  .bd-radio {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(0,0,0,0.18);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .bd-radio:hover { border-color: rgba(160,143,255,0.35); background: rgba(0,0,0,0.25); }
+  .bd-radio input { margin-top: 3px; accent-color: #a08fff; }
+  .bd-radio span { font-size: 13px; color: rgba(232,230,240,0.88); }
+  .bd-radio span strong { color: #ffffff; }
+
+  /* Checkbox */
+  .bd-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba(232,230,240,0.82);
+    line-height: 1.55;
+    cursor: pointer;
+  }
+  .bd-checkbox input { margin-top: 3px; accent-color: #a08fff; }
+
+  /* Submit button */
+  .bd-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #8a72ff 0%, #a08fff 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: transform .12s ease, box-shadow .15s ease, opacity .15s ease;
+    margin-top: 4px;
+  }
+  .bd-submit:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(138,114,255,0.3); }
+  .bd-submit:active { transform: translateY(0); }
+  .bd-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .bd-submit .bd-spinner {
+    width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    display: none;
+    animation: bd-spin 0.6s linear infinite;
+  }
+  .bd-submit.is-loading .bd-spinner { display: inline-block; }
+  @keyframes bd-spin { to { transform: rotate(360deg); } }
+
+  .bd-form-foot {
+    font-size: 12px;
+    color: rgba(232,230,240,0.5);
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+
+  /* Form response (success / error) */
+  .bd-form-response {
+    display: none;
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .bd-form-response.is-success {
+    display: block;
+    background: rgba(126,227,168,0.08);
+    border: 1px solid rgba(126,227,168,0.35);
+    color: #b8f0d2;
+  }
+  .bd-form-response.is-error {
+    display: block;
+    background: rgba(255,140,147,0.08);
+    border: 1px solid rgba(255,140,147,0.35);
+    color: #ffc6ca;
+  }
+  .bd-form-response strong { color: #ffffff; font-weight: 700; }
+
+  /* Email template box */
+  .bd-template {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 12.5px;
+    color: rgba(232,230,240,0.85);
+    line-height: 1.7;
+    margin: 10px 0 14px;
+    white-space: pre-wrap;
+  }
+
+  /* Contact grid */
+  .bd-contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .bd-contact-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .bd-contact-card .bd-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(160,143,255,0.85);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .bd-contact-card .bd-value { font-size: 13px; color: #ffffff; word-break: break-word; line-height: 1.5; }
+
+  /* Legal strip */
+  .bd-legal-strip {
+    margin-top: 22px;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    text-align: center;
+    font-size: 12.5px;
+    color: rgba(232,230,240,0.78);
+    line-height: 1.6;
+  }
+  .bd-legal-strip strong { color: #ffffff; font-weight: 700; }
+
+  /* Footer */
+  .bd-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 12px;
+    color: rgba(232,230,240,0.5);
+    text-align: center;
+  }
+  .bd-footer p + p { margin-top: 6px; }
+
+  @media (max-width: 720px) {
+    .bd-root { padding: 32px 18px 60px; font-size: 14px; }
+    .bd-title { font-size: 28px; }
+    .bd-section h2 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="bd-root">
+<div class="bd-wrap">
+
+  <!-- HEADER -->
+  <header class="bd-header">
+    <div class="bd-eyebrow">Privacy</div>
+    <h1 class="bd-title">Delete your Brainam data</h1>
+    <p class="bd-subtitle">You can ask us to delete your Brainam account, specific data, or data we obtained through a connected Meta product (Facebook, Instagram, WhatsApp). Pick the option below that suits you.</p>
+  </header>
+
+  <!-- 1: OPTIONS -->
+  <section class="bd-section">
+    <h2><span class="bd-num">1.</span>Three ways to request deletion</h2>
+    <div class="bd-options">
+      <div class="bd-option">
+        <span class="bd-opt-num">FASTEST</span>
+        <h4>In-product (self-serve)</h4>
+        <p>Sign in to Brainam &rarr; Settings &rarr; Account &rarr; <strong>Delete Account</strong>. Deletion starts immediately.</p>
+      </div>
+      <div class="bd-option">
+        <span class="bd-opt-num">SIMPLE</span>
+        <h4>Email us</h4>
+        <p>Send an email to <strong>grievance@brainam.ai</strong> using the template below.</p>
+      </div>
+      <div class="bd-option">
+        <span class="bd-opt-num">FORM</span>
+        <h4>Use the form on this page</h4>
+        <p>Fill in the request form below and we&rsquo;ll acknowledge within 48 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2: WHAT GETS DELETED -->
+  <section class="bd-section">
+    <h2><span class="bd-num">2.</span>What gets deleted</h2>
+
+    <h3>If you delete your entire Brainam account</h3>
+    <ul class="bd-list-yes">
+      <li>Your profile, login credentials, and account settings.</li>
+      <li>All AI agents, training content, prompts, and uploaded knowledge files.</li>
+      <li>All conversations and agent run history.</li>
+      <li>Connected OAuth tokens and integration credentials (we also recommend revoking access from the third-party app).</li>
+      <li>Active BYOK subscriptions are cancelled (no further charges).</li>
+      <li>Unconsumed Chips (paid and promotional) are forfeited.</li>
+    </ul>
+
+    <h3>If you request deletion of Meta-sourced data only</h3>
+    <ul class="bd-list-yes">
+      <li>Messages, profile data and metadata received via Facebook Pages Messaging, Instagram Messaging, or WhatsApp Business Cloud API.</li>
+      <li>Cached page IDs, account IDs, and integration tokens for the specified Meta account.</li>
+      <li>Your Brainam account remains active &mdash; only the Meta-sourced data is removed.</li>
+    </ul>
+  </section>
+
+  <!-- 3: WHAT IS RETAINED -->
+  <section class="bd-section">
+    <h2><span class="bd-num">3.</span>What we are required to keep</h2>
+    <p>Some records cannot be deleted immediately because Indian law requires us to retain them:</p>
+    <ul class="bd-list-no">
+      <li><strong>Tax invoices and billing records</strong> &mdash; retained for 8 years under Indian tax law.</li>
+      <li><strong>Security and audit logs</strong> &mdash; retained for 12 months for fraud detection and incident investigation.</li>
+      <li><strong>De-identified aggregate analytics</strong> &mdash; retained indefinitely in a form that cannot be linked back to you.</li>
+      <li><strong>Backups</strong> &mdash; live deletion is immediate, but encrypted backup copies are purged within <strong>90 days</strong>.</li>
+    </ul>
+  </section>
+
+  <!-- 4: TIMELINE -->
+  <section class="bd-section">
+    <h2><span class="bd-num">4.</span>Timeline</h2>
+    <div class="bd-callout">
+      <p><strong>Acknowledgement:</strong> within 48 hours of receiving your request.</p>
+      <p><strong>Completion:</strong> within 30 days. You will receive a reference number by email once deletion is complete.</p>
+      <p><strong>Backup purge:</strong> within 90 days of completion.</p>
+    </div>
+    <p>If you do not receive an acknowledgement within 48 hours, please email <a href="mailto:grievance@brainam.ai">grievance@brainam.ai</a> directly.</p>
+  </section>
+
+  <!-- 5: FORM -->
+  <section class="bd-section">
+    <h2><span class="bd-num">5.</span>Submit a deletion request</h2>
+    <p>Fill in the form below. Fields marked with <span style="color:#ff8c93;">*</span> are required.</p>
+
+    <div class="bd-form-wrap">
+      <div class="bd-form-title">Deletion request form</div>
+      <div class="bd-form-sub">We will respond to the email address you provide here.</div>
+
+      <form id="bd-form" novalidate>
+        <!-- Web3Forms access key -->
+        <input type="hidden" name="access_key" value="9033c743-f9e6-49f8-bb73-19307d1c9d01">
+        <!-- Subject line that arrives in the grievance inbox -->
+        <input type="hidden" name="subject" value="Brainam Data Deletion Request">
+        <!-- From name shown in inbox -->
+        <input type="hidden" name="from_name" value="Brainam Data Deletion">
+        <!-- Honeypot to deter bots (Web3Forms checks this) -->
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="bd-form-row">
+          <label for="bd-name">Your name <span class="bd-opt">(optional)</span></label>
+          <input id="bd-name" type="text" name="name" placeholder="Full name">
+        </div>
+
+        <div class="bd-form-row">
+          <label for="bd-email">Email address <span class="bd-req">*</span></label>
+          <input id="bd-email" type="email" name="email" required placeholder="you@example.com">
+        </div>
+
+        <div class="bd-form-row">
+          <label for="bd-account">Brainam account email <span class="bd-opt">(if different from above)</span></label>
+          <input id="bd-account" type="email" name="account_email" placeholder="account@example.com">
+        </div>
+
+        <div class="bd-form-row">
+          <label>What should we delete? <span class="bd-req">*</span></label>
+          <div class="bd-radio-group">
+            <label class="bd-radio">
+              <input type="radio" name="request_type" value="Entire Brainam Account" required>
+              <span><strong>My entire Brainam account</strong> &mdash; agents, data, conversations, integrations.</span>
+            </label>
+            <label class="bd-radio">
+              <input type="radio" name="request_type" value="Meta-sourced data only">
+              <span><strong>Meta-sourced data only</strong> &mdash; Facebook, Instagram or WhatsApp data received via Meta APIs.</span>
+            </label>
+            <label class="bd-radio">
+              <input type="radio" name="request_type" value="Specific data">
+              <span><strong>Specific data</strong> &mdash; describe in the &ldquo;Reason / details&rdquo; field below.</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="bd-form-row">
+          <label for="bd-meta-id">Meta Page / IG / WhatsApp ID <span class="bd-opt">(if applicable)</span></label>
+          <input id="bd-meta-id" type="text" name="meta_id" placeholder="Facebook Page ID, Instagram username, or WhatsApp Business Account ID">
+        </div>
+
+        <div class="bd-form-row">
+          <label for="bd-reason">Reason / details <span class="bd-opt">(optional)</span></label>
+          <textarea id="bd-reason" name="reason" placeholder="Tell us a bit more, especially if you selected 'Specific data' above."></textarea>
+        </div>
+
+        <div class="bd-form-row">
+          <label class="bd-checkbox">
+            <input type="checkbox" name="confirm" value="Yes" required>
+            <span>I confirm that I am the account holder (or an authorised representative) and understand that some records will be retained as described in Section 3 above.</span>
+          </label>
+        </div>
+
+        <button id="bd-submit-btn" type="submit" class="bd-submit">
+          <span class="bd-spinner"></span>
+          <span class="bd-submit-text">Submit deletion request</span>
+        </button>
+
+        <p class="bd-form-foot">By submitting, you consent to Brainam processing your request as described in our <a href="https://brainam.ai/privacy">Privacy Policy</a>. We will not share your details with any third party.</p>
+
+        <!-- Inline success/error response area -->
+        <div id="bd-form-response" class="bd-form-response"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 6: EMAIL FALLBACK -->
+  <section class="bd-section">
+    <h2><span class="bd-num">6.</span>Prefer email? Use this template</h2>
+    <p>If you would rather email us directly, copy the template below and send it to <a href="mailto:grievance@brainam.ai">grievance@brainam.ai</a>.</p>
+
+    <div class="bd-template">To: grievance@brainam.ai
+Subject: Data Deletion Request
+
+- Account email: [your Brainam email]
+- Request type: [Entire account / Meta-sourced data only / Specific data]
+- Meta Page / IG / WhatsApp ID: [if applicable]
+- Reason / details: [optional]
+- I confirm I am the account holder.
+
+Thank you.
+</div>
+
+    <p>We will acknowledge your email within <strong>48 hours</strong> and complete the deletion within <strong>30 days</strong>.</p>
+  </section>
+
+  <!-- 7: CONTACT / GRIEVANCE -->
+  <section class="bd-section">
+    <h2><span class="bd-num">7.</span>Need help or escalation</h2>
+    <p>If your request is not resolved to your satisfaction, you may escalate to our Grievance Officer, appointed under the Consumer Protection (E-Commerce) Rules, 2020 and the Information Technology (Intermediary Guidelines) Rules, 2021.</p>
+    <div class="bd-contact-grid">
+      <div class="bd-contact-card">
+        <div class="bd-label">Grievance Officer</div>
+        <div class="bd-value">Sachin Arora</div>
+      </div>
+      <div class="bd-contact-card">
+        <div class="bd-label">Email</div>
+        <div class="bd-value">grievance@brainam.ai</div>
+      </div>
+      <div class="bd-contact-card">
+        <div class="bd-label">Office Address</div>
+        <div class="bd-value">Taku Ventures Private Limited,<br>Shop No.- 313, 3rd Floor, Aggarwal Square Plaza, Pocket 7, Plot - 8,Dwarka Sector 12,<br>New Delhi, Delhi 110078, India</div>
+      </div>
+      <div class="bd-contact-card">
+        <div class="bd-label">General contact</div>
+        <div class="bd-value">hello@brainam.ai</div>
+      </div>
+    </div>
+
+    <!-- Entity disclosure strip -->
+    <div class="bd-legal-strip">
+      <strong>Operated by:</strong> Taku Ventures Private Limited &middot;
+      <strong>CIN:</strong> U79110DL2024PTC431506 &middot;
+      <strong>GSTIN:</strong> 07AALCT0078R1ZL<br>
+      <strong>Operating Office:</strong> Shop No. 313, 3rd Floor, Aggarwal Square Plaza, Pocket 7, Plot - 8,Dwarka Sector 12,New Delhi, Delhi 110078 &middot;
+      <strong>Registered Office:</strong> F-12, Gali No. 1, Shyam Vihar Ph-1, Najafgarh, New Delhi - 110043
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bd-footer">
+    <p>&copy; 2026 Taku Ventures Private Limited (operating the Brainam product) &middot; Last updated 23 May 2026</p>
+    <p>See our <a href="https://brainam.ai/privacy" style="color:rgba(232,230,240,0.7);">Privacy Policy</a> for the full data-retention schedule.</p>
+  </footer>
+
+</div>
+</div>
+
+<!--
+  Three scripts in one block:
+  1. Link breakout: external links get target="_top" so they break out
+     of the Framer iframe correctly. Internal hash links stay in-iframe.
+  2. AJAX form submission to Web3Forms — keeps user on the page,
+     shows inline success/error message, no iframe redirect issues.
+  3. Auto-resize broadcaster — Framer can use "Fit Content" height.
+-->
+<script>
+(function () {
+  /* 1. Link breakout */
+  function breakoutLinks() {
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (href && !href.startsWith('#') && !a.hasAttribute('target')) {
+        a.setAttribute('target', '_top');
+      }
+    });
+  }
+
+  /* 2. Form submission */
+  function setupForm() {
+    var form = document.getElementById('bd-form');
+    var btn = document.getElementById('bd-submit-btn');
+    var btnText = btn.querySelector('.bd-submit-text');
+    var responseEl = document.getElementById('bd-form-response');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      responseEl.className = 'bd-form-response';
+      responseEl.textContent = '';
+
+      // Basic validation
+      var email = form.querySelector('[name="email"]').value.trim();
+      var requestType = form.querySelector('[name="request_type"]:checked');
+      var confirmed = form.querySelector('[name="confirm"]').checked;
+
+      if (!email || !requestType || !confirmed) {
+        responseEl.className = 'bd-form-response is-error';
+        responseEl.innerHTML = '<strong>Please complete the required fields:</strong> email address, what to delete, and the confirmation checkbox.';
+        return;
+      }
+
+      // Lock the button
+      btn.disabled = true;
+      btn.classList.add('is-loading');
+      btnText.textContent = 'Submitting...';
+
+      // Build payload
+      var formData = new FormData(form);
+      var payload = {};
+      formData.forEach(function (v, k) { payload[k] = v; });
+
+      // POST to Web3Forms
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data && data.success) {
+          responseEl.className = 'bd-form-response is-success';
+          responseEl.innerHTML = '<strong>Request received.</strong> We have logged your deletion request and our team will acknowledge it at the email address you provided within <strong>48 hours</strong>. Deletion will be completed within 30 days.';
+          form.reset();
+          btnText.textContent = 'Submitted';
+          // Keep the button disabled so user doesn't re-submit
+        } else {
+          throw new Error(data && data.message ? data.message : 'Submission failed');
+        }
+      })
+      .catch(function (err) {
+        responseEl.className = 'bd-form-response is-error';
+        responseEl.innerHTML = '<strong>Something went wrong.</strong> Please email <a href="mailto:grievance@brainam.ai" style="color:#ffc6ca;">grievance@brainam.ai</a> directly with your details. (' + (err && err.message ? err.message : 'network error') + ')';
+        btn.disabled = false;
+        btn.classList.remove('is-loading');
+        btnText.textContent = 'Submit deletion request';
+      });
+    });
+  }
+
+  /* 3. Auto-resize broadcaster */
+  function measure() {
+    var d = document, b = d.body, h = d.documentElement;
+    return Math.max(
+      b.scrollHeight, b.offsetHeight,
+      h.scrollHeight, h.offsetHeight, h.clientHeight
+    );
+  }
+  var lastSent = -1;
+  function send(force) {
+    var h = measure();
+    if (!force && Math.abs(h - lastSent) < 4) return;
+    lastSent = h;
+    try {
+      window.parent.postMessage({
+        source: 'brainam-data-deletion',
+        type:   'brainam:resize',
+        height: h
+      }, '*');
+    } catch (e) { /* parent unreachable */ }
+  }
+
+  function init() {
+    breakoutLinks();
+    setupForm();
+    send(true);
+  }
+  if (document.readyState === 'complete') init();
+  else window.addEventListener('load', init);
+
+  window.addEventListener('resize', function () { send(false); });
+  setInterval(function () { send(false); }, 350);
+})();
+</script>
+</body>
+</html>

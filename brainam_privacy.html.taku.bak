@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brainam &mdash; Privacy Policy</title>
+<!--
+  Brainam · Privacy Policy
+  -------------------------------------------------------------
+  Dark theme matching the Brainam site root colour #08070e.
+  Scoped via .bv- prefix so it can coexist with the other Brainam
+  embeds on the same Framer page without class collisions.
+  Pure ASCII (HTML entities) so it survives any editor / paste path.
+
+  IMPORTANT: do NOT open this file in TextEdit. TextEdit will silently
+  flatten the HTML into Cocoa rich-text and destroy the structure.
+  Open with VS Code (or any real code editor) only. To upload to
+  GitHub, drag-and-drop directly from Desktop into the GitHub web
+  upload dialog — never open in TextEdit first.
+  -------------------------------------------------------------
+-->
+<style>
+  .bv-root, .bv-root * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .bv-root {
+    background: transparent;
+    color: #e8e6f0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    padding: 48px 24px 80px;
+  }
+
+  .bv-wrap { max-width: 880px; margin: 0 auto; }
+
+  /* Header */
+  .bv-header { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .bv-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a08fff;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .bv-title {
+    font-size: 38px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .bv-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 28px;
+    font-size: 13px;
+    color: rgba(232,230,240,0.6);
+  }
+  .bv-meta span strong { color: rgba(232,230,240,0.9); font-weight: 600; }
+
+  /* Intro */
+  .bv-intro {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 24px 26px;
+    margin-bottom: 40px;
+  }
+  .bv-intro p { color: rgba(232,230,240,0.85); }
+  .bv-intro p + p { margin-top: 12px; }
+  .bv-intro strong { color: #ffffff; font-weight: 600; }
+
+  /* TOC */
+  .bv-toc {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 48px;
+  }
+  .bv-toc-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #a08fff;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .bv-toc ol {
+    list-style: none;
+    counter-reset: bv-toc;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 28px;
+  }
+  .bv-toc ol li { counter-increment: bv-toc; font-size: 14px; }
+  .bv-toc ol li::before {
+    content: counter(bv-toc) ".";
+    color: rgba(160,143,255,0.7);
+    margin-right: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .bv-toc a { color: rgba(232,230,240,0.78); text-decoration: none; transition: color .15s ease; }
+  .bv-toc a:hover { color: #ffffff; }
+
+  /* Sections */
+  .bv-section { margin-bottom: 44px; scroll-margin-top: 24px; }
+  .bv-section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .bv-section h2 .bv-num {
+    color: rgba(160,143,255,0.85);
+    font-weight: 600;
+    margin-right: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+  .bv-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.94);
+    margin-top: 22px;
+    margin-bottom: 10px;
+  }
+  .bv-section p { color: rgba(232,230,240,0.82); margin-bottom: 12px; }
+  .bv-section p strong { color: #ffffff; font-weight: 600; }
+  .bv-section a { color: #b9a8ff; text-decoration: underline; text-decoration-color: rgba(185,168,255,0.4); text-underline-offset: 3px; }
+  .bv-section a:hover { color: #d4c5ff; }
+  .bv-section code {
+    background: rgba(255,255,255,0.06);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    color: #d6cefb;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  /* Lists */
+  .bv-section ul { list-style: none; margin: 8px 0 14px; padding: 0; }
+  .bv-section ul li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 8px;
+    color: rgba(232,230,240,0.82);
+  }
+  .bv-section ul li::before {
+    content: "\2022";
+    position: absolute;
+    left: 6px;
+    color: rgba(160,143,255,0.7);
+  }
+  .bv-section ul li strong { color: #ffffff; }
+
+  /* Callout */
+  .bv-callout {
+    border-left: 3px solid #a08fff;
+    background: rgba(160,143,255,0.06);
+    padding: 16px 18px;
+    border-radius: 0 10px 10px 0;
+    margin: 16px 0 18px;
+  }
+  .bv-callout p { color: rgba(232,230,240,0.92); margin-bottom: 0; }
+  .bv-callout p + p { margin-top: 10px; }
+
+  /* Table */
+  .bv-table-wrap { overflow-x: auto; margin: 16px 0 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); }
+  .bv-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 580px; }
+  .bv-table thead th {
+    background: rgba(255,255,255,0.04);
+    color: #ffffff;
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .bv-table tbody td {
+    padding: 12px 14px;
+    color: rgba(232,230,240,0.82);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    vertical-align: top;
+  }
+  .bv-table tbody tr:last-child td { border-bottom: none; }
+  .bv-table tbody td strong { color: #ffffff; font-weight: 600; }
+
+  /* Contact / disclosure grid */
+  .bv-contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .bv-contact-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .bv-contact-card .bv-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(160,143,255,0.85);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .bv-contact-card .bv-value { font-size: 14px; color: #ffffff; word-break: break-word; line-height: 1.5; }
+
+  /* Legal strip (entity disclosure) */
+  .bv-legal-strip {
+    margin-top: 22px;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: baseline;
+    justify-content: center;
+    text-align: center;
+    font-size: 12.5px;
+    color: rgba(232,230,240,0.78);
+  }
+  .bv-legal-strip strong { color: #ffffff; font-weight: 700; }
+  .bv-legal-strip .bv-legal-sep {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(232,230,240,0.45);
+    align-self: center;
+    flex-shrink: 0;
+  }
+
+  /* Footer */
+  .bv-footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 12px;
+    color: rgba(232,230,240,0.5);
+    text-align: center;
+  }
+  .bv-footer p + p { margin-top: 6px; }
+
+  @media (max-width: 720px) {
+    .bv-root { padding: 32px 18px 60px; font-size: 14px; }
+    .bv-title { font-size: 30px; }
+    .bv-section h2 { font-size: 19px; }
+    .bv-toc ol { grid-template-columns: 1fr; }
+    .bv-legal-strip {
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+    }
+    .bv-legal-strip .bv-legal-sep { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="bv-root">
+<div class="bv-wrap">
+
+  <!-- HEADER -->
+  <header class="bv-header">
+    <div class="bv-eyebrow">Legal</div>
+    <h1 class="bv-title">Privacy Policy</h1>
+    <div class="bv-meta">
+      <span><strong>Effective:</strong> 23 May 2026</span>
+      <span><strong>Last updated:</strong> 23 May 2026</span>
+      <span><strong>Version:</strong> 1.0</span>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <div class="bv-intro">
+    <p>Brainam (&ldquo;Brainam&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo; or &ldquo;our&rdquo;) is a product operated by <strong>Taku Ventures Private Limited</strong>, an Indian company (CIN: <strong>U79110DL2024PTC431506</strong>, GSTIN: <strong>07AALCT0078R1ZL</strong>). We help businesses build, train, and deploy AI agents that automate customer support, sales outreach, research, and operational workflows.</p>
+    <p>This Privacy Policy explains what personal data we collect, how we use it, who we share it with, and the rights you have under the <strong>Digital Personal Data Protection Act, 2023 (DPDP Act)</strong>, the <strong>Information Technology Act, 2000</strong> and its rules, the <strong>EU/UK GDPR</strong>, and the <strong>CCPA/CPRA</strong>. By using Brainam you agree to the practices described below. If you do not agree, please do not use our services.</p>
+  </div>
+
+  <!-- TOC -->
+  <nav class="bv-toc">
+    <div class="bv-toc-title">Table of contents</div>
+    <ol>
+      <li><a href="#bv-s1">Introduction &amp; who we are</a></li>
+      <li><a href="#bv-s2">Scope of application &amp; updates</a></li>
+      <li><a href="#bv-s3">Definitions</a></li>
+      <li><a href="#bv-s4">Categories of personal data</a></li>
+      <li><a href="#bv-s5">How we use your personal data</a></li>
+      <li><a href="#bv-s6">Payment processing</a></li>
+      <li><a href="#bv-s7">Email &amp; contact form</a></li>
+      <li><a href="#bv-s8">Data processing via our website</a></li>
+      <li><a href="#bv-s9">Google API Services &mdash; Limited Use Disclosure</a></li>
+      <li><a href="#bv-s10">Meta Platforms &amp; data deletion instructions</a></li>
+      <li><a href="#bv-s11">Disclosure, sub-processors &amp; international transfers</a></li>
+      <li><a href="#bv-s12">Use of cookies</a></li>
+      <li><a href="#bv-s13">Automated decision-making &amp; use of AI</a></li>
+      <li><a href="#bv-s14">AI model training boundaries</a></li>
+      <li><a href="#bv-s15">How long we keep your data</a></li>
+      <li><a href="#bv-s16">Data deletion requests</a></li>
+      <li><a href="#bv-s17">Your rights under data protection laws</a></li>
+      <li><a href="#bv-s18">Children&rsquo;s privacy</a></li>
+      <li><a href="#bv-s19">Security</a></li>
+      <li><a href="#bv-s20">Changes to this policy</a></li>
+      <li><a href="#bv-s21">Grievance Officer (India / DPDP)</a></li>
+      <li><a href="#bv-s22">Contact us</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section class="bv-section" id="bv-s1">
+    <h2><span class="bv-num">1.</span>Introduction &amp; who we are</h2>
+    <p>Brainam is operated by <strong>Taku Ventures Private Limited</strong> (&ldquo;the Company&rdquo;, &ldquo;Brainam&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;), an Indian company. We are committed to protecting your privacy. &ldquo;User&rdquo;, &ldquo;you&rdquo; or &ldquo;your&rdquo; refers to any individual who accesses or uses our website or services, including any features, tools, or functionality made available through them.</p>
+
+    <div class="bv-contact-grid">
+      <div class="bv-contact-card">
+        <div class="bv-label">Operating Office</div>
+        <div class="bv-value">Shop No. 313, 3rd Floor,<br>Aggarwal Square Plaza,&ndash;Dwarka Sector 12,<br>Dwarka,New Delhi,<br>New Delhi 110078, India</div>
+      </div>
+      <div class="bv-contact-card">
+        <div class="bv-label">Registered Office</div>
+        <div class="bv-value">F-12, Gali No. 1, Shyam Vihar Ph-1,<br>Najafgarh, New Delhi - 110043,<br>India</div>
+      </div>
+      <div class="bv-contact-card">
+        <div class="bv-label">Website</div>
+        <div class="bv-value"><a href="https://brainam.ai" style="color:#fff;">brainam.ai</a></div>
+      </div>
+      <div class="bv-contact-card">
+        <div class="bv-label">General Contact</div>
+        <div class="bv-value">hello@brainam.ai</div>
+      </div>
+      <div class="bv-contact-card">
+        <div class="bv-label">Privacy &amp; Grievance</div>
+        <div class="bv-value">grievance@brainam.ai</div>
+      </div>
+      <div class="bv-contact-card">
+        <div class="bv-label">CIN / GSTIN</div>
+        <div class="bv-value">U79110DL2024PTC431506<br>07AALCT0078R1ZL</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="bv-section" id="bv-s2">
+    <h2><span class="bv-num">2.</span>Scope of application &amp; updates</h2>
+    <p>This Privacy Policy applies to all users and explains why, how, and when we process personal data to offer and provide our website and services. It also describes the choices available to you regarding the processing of your personal data.</p>
+    <p>This Privacy Policy is part of, and incorporated into, our <a href="https://brainam.ai/terms">Terms &amp; Conditions</a>. Capitalised terms not defined here have the meaning given in our Terms &amp; Conditions. This Privacy Policy does not apply where separate privacy terms are provided.</p>
+    <p>Our website and services may contain links to third-party websites and may integrate third-party functionality, such as social media plug-ins, tools or APIs, to enhance your experience. We do not control these third parties or how they process your personal data, and their privacy practices may differ from ours. Any personal data you provide or that is processed through such third-party websites or functionality is governed solely by the respective third party&rsquo;s privacy policy and terms.</p>
+    <p>We may update this Privacy Policy from time to time to reflect legal changes or enhancements to our website or services. The latest version is always available on our website. The &ldquo;last updated&rdquo; date indicates when changes have been made. Material changes will be notified by email and in-product banner at least <strong>30 days</strong> before they take effect.</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="bv-section" id="bv-s3">
+    <h2><span class="bv-num">3.</span>Definitions</h2>
+    <ul>
+      <li><strong>Personal Data / Personal Information</strong> &mdash; any information that identifies you or can reasonably be linked to you.</li>
+      <li><strong>Data Principal</strong> &mdash; the individual to whom personal data relates (DPDP Act).</li>
+      <li><strong>Data Fiduciary</strong> &mdash; the entity that determines the purpose and means of processing personal data &mdash; Brainam (Taku Ventures Private Limited), in respect of customer accounts.</li>
+      <li><strong>Data Processor / Sub-processor</strong> &mdash; a third party that processes data on our behalf under contract.</li>
+      <li><strong>Processing</strong> &mdash; any operation performed on personal data &mdash; collection, storage, use, sharing, deletion, etc.</li>
+      <li><strong>Customer</strong> &mdash; a business or individual that has signed up for a Brainam account, paid or free.</li>
+    </ul>
+  </section>
+
+  <!-- 4 -->
+  <section class="bv-section" id="bv-s4">
+    <h2><span class="bv-num">4.</span>Categories of personal data</h2>
+    <p>We may process the following categories of personal data that you provide directly, that are generated through your use of our website or services, or that we receive from third-party services or publicly available sources:</p>
+    <ul>
+      <li><strong>Contact data</strong> &mdash; name, email address, phone number, country or place of residence.</li>
+      <li><strong>Communication data</strong> &mdash; information contained in communications with us, such as emails, chat messages, support requests, feedback, or other content you voluntarily provide.</li>
+      <li><strong>Account &amp; usage data</strong> &mdash; pseudonymised user and workspace identifiers, account settings, authentication events, agent and workflow usage metrics, enabled integrations, chip balance and consumption, and billing information.</li>
+      <li><strong>Training content</strong> &mdash; documents, prompts, sample conversations, knowledge files, images, and any other content you upload to train your AI agents.</li>
+      <li><strong>Marketing data</strong> &mdash; contact preferences, newsletter subscriptions, email engagement, and registrations for events, webinars, or product updates.</li>
+      <li><strong>Traffic &amp; device data</strong> &mdash; IP address, device and browser type, operating system, language settings, access times, device identifiers and tokens, log files, HTTP request data, feature interactions and associated usage metrics.</li>
+      <li><strong>Integration data</strong> &mdash; data received from third-party apps you connect (e.g. Gmail, WhatsApp, Instagram, Zoho) under the OAuth scopes you authorise.</li>
+    </ul>
+  </section>
+
+  <!-- 5 -->
+  <section class="bv-section" id="bv-s5">
+    <h2><span class="bv-num">5.</span>How we use your personal data</h2>
+    <p>The table below summarises our data processing activities, the categories of data involved, and the legal basis under GDPR. Where the DPDP Act applies, processing is based on your consent or as permitted under Section 7 of the Act for legitimate uses.</p>
+
+    <div class="bv-table-wrap">
+      <table class="bv-table">
+        <thead>
+          <tr>
+            <th>Purpose</th>
+            <th>Personal data</th>
+            <th>Legal basis (GDPR)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Account creation &amp; service delivery</strong> &mdash; create &amp; maintain your account, run your AI agents, deliver outputs.</td>
+            <td>Contact, account &amp; usage, training content, integration data.</td>
+            <td>Performance of a contract (Art. 6(1)(b)).</td>
+          </tr>
+          <tr>
+            <td><strong>Agent training &amp; inference</strong> &mdash; storing prompts, knowledge files, conversation history so your agents perform as configured.</td>
+            <td>Training content, account &amp; usage data.</td>
+            <td>Performance of a contract (Art. 6(1)(b)).</td>
+          </tr>
+          <tr>
+            <td><strong>Payment processing</strong> &mdash; chip top-ups, BYOK subscriptions, refunds, invoicing, tax compliance.</td>
+            <td>Contact, billing address, payment details (via Razorpay).</td>
+            <td>Performance of a contract (Art. 6(1)(b)); legal obligation (Art. 6(1)(c)).</td>
+          </tr>
+          <tr>
+            <td><strong>Product analytics &amp; improvement</strong> &mdash; aggregated, de-identified usage to fix bugs and improve features.</td>
+            <td>Traffic &amp; device, account &amp; usage data.</td>
+            <td>Legitimate interest (Art. 6(1)(f)).</td>
+          </tr>
+          <tr>
+            <td><strong>Support &amp; communications</strong> &mdash; responding to enquiries, support requests, dispute resolution.</td>
+            <td>Contact, communication, account &amp; usage data.</td>
+            <td>Performance of a contract; legitimate interest.</td>
+          </tr>
+          <tr>
+            <td><strong>Newsletter &amp; marketing</strong> &mdash; product updates, event invites, promotional emails.</td>
+            <td>Contact, marketing data.</td>
+            <td>Consent (Art. 6(1)(a)); legitimate interest.</td>
+          </tr>
+          <tr>
+            <td><strong>Security, compliance &amp; legal</strong> &mdash; IT security, fraud prevention, statutory retention, cooperation with authorities.</td>
+            <td>All categories, as relevant.</td>
+            <td>Legal obligation (Art. 6(1)(c)); legitimate interest.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="bv-section" id="bv-s6">
+    <h2><span class="bv-num">6.</span>Payment processing</h2>
+    <p>We use <strong>Razorpay Software Private Limited</strong> as our payment service provider for processing online payments, invoicing, and, where applicable, GST and tax handling. Payment card details are <strong>never stored on Brainam servers</strong> &mdash; they are handled directly by Razorpay, which is PCI-DSS Level 1 compliant.</p>
+    <p>Information processed for payments includes name, email address, billing address, payment information (e.g. card or UPI details), IP address, transaction data and, where applicable, company-related information. The processing is carried out for the purpose of payment processing, fraud prevention, invoicing and tax compliance.</p>
+    <p>The payment service provider may act as an independent controller within the meaning of Art. 4(7) GDPR, in particular where it processes payment data in its own name as a so-called &ldquo;merchant of record.&rdquo;</p>
+    <p>Personal data will only be disclosed to third parties if this is necessary for contract processing, required by law, or carried out within the framework of commissioned data processing. Data relevant under commercial and tax law is generally stored for the duration of the applicable statutory retention periods (8 years under Indian law).</p>
+  </section>
+
+  <!-- 7 -->
+  <section class="bv-section" id="bv-s7">
+    <h2><span class="bv-num">7.</span>Email &amp; contact form</h2>
+    <p>Our website provides multiple ways to contact us quickly, including our email addresses and contact form. If you contact us by email or via our contact form, the personal data you provide will be stored automatically. Additional data processed during the contact process serves to prevent misuse of the contact form and to ensure the security of our information technology systems.</p>
+    <p>The legal basis for the processing of data transmitted in the course of sending an email is Art. 6(1)(b) GDPR. We use the personal data you provide exclusively for the purpose of processing your specific enquiry. The data provided will always be treated confidentially.</p>
+    <p>The data will be deleted as soon as it is no longer necessary for the purpose for which it was processed &mdash; typically when the conversation has ended and the matter has been conclusively clarified.</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="bv-section" id="bv-s8">
+    <h2><span class="bv-num">8.</span>Data processing via our website</h2>
+
+    <h3>Access data in server log files</h3>
+    <p>Every time you visit our website, we automatically store access data in server log files. This includes the date and time of the visit, the amount of data transferred, the name of the requested file, the browser used and its version, the operating system used, the IP address and the referrer URL. The temporary storage of the IP address is necessary to enable the website to be delivered to your device.</p>
+    <p>This data is evaluated exclusively to ensure permanent and trouble-free operation of the website, to improve its content, to transmit to law enforcement authorities in the event of a cyber-attack, and to ensure the security of our information technology systems &mdash; which constitute our legitimate interest in this processing (Art. 6(1)(f) GDPR).</p>
+
+    <h3>Content delivery network &amp; security provider</h3>
+    <p>Our website uses a content delivery network (CDN) and security service provider for load balancing, protection against denial-of-service (DDoS) attacks, bot detection and safeguarding the integrity and confidentiality of our IT systems. Incoming requests are routed via the provider&rsquo;s globally distributed edge servers, and access data may be processed by the provider before being forwarded to our servers.</p>
+
+    <h3>Third-party tools for marketing, analytics &amp; optimisation</h3>
+    <p>When you visit our website, we process data for marketing, statistics, optimisation and IT security, in some cases with the support of service providers. We ask for your consent for this processing through our cookie banner. Detailed information about the cookies and services used can be found via the &ldquo;Cookie Settings&rdquo; button at the bottom of the page.</p>
+  </section>
+
+  <!-- 9 -->
+  <section class="bv-section" id="bv-s9">
+    <h2><span class="bv-num">9.</span>Google API Services &mdash; Limited Use Disclosure</h2>
+    <div class="bv-callout">
+      <p><strong>Brainam&rsquo;s use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</strong></p>
+    </div>
+    <p>Specifically:</p>
+    <ul>
+      <li>We use Google user data <strong>only</strong> to provide and improve user-facing features that are prominent in the Brainam interface (such as reading and sending email on the user&rsquo;s behalf, reading calendar events, or accessing Drive files the user explicitly selects).</li>
+      <li>We <strong>do not</strong> use Google user data for serving advertisements.</li>
+      <li>We <strong>do not</strong> transfer Google user data to third parties except as necessary to provide or improve user-facing features, comply with applicable law, or as part of a merger, acquisition, or sale of assets with the user&rsquo;s explicit consent.</li>
+      <li>We <strong>do not</strong> allow humans to read Google user data unless: (a) we have the user&rsquo;s affirmative agreement for specific messages, (b) it is necessary for security purposes (e.g., investigating abuse), (c) it is necessary to comply with applicable law, or (d) the data is aggregated and used for internal operations in accordance with applicable privacy laws.</li>
+    </ul>
+
+    <h3>OAuth scopes we may request</h3>
+    <p>We only request the scopes required to power the integration you enable:</p>
+    <ul>
+      <li><code>gmail.readonly</code>, <code>gmail.send</code>, <code>gmail.modify</code> &mdash; for email-handling agents.</li>
+      <li><code>calendar.readonly</code>, <code>calendar.events</code> &mdash; for scheduling agents.</li>
+      <li><code>drive.readonly</code>, <code>drive.file</code> &mdash; for document-handling agents.</li>
+      <li><code>userinfo.email</code>, <code>userinfo.profile</code> &mdash; for sign-in only.</li>
+    </ul>
+    <p>You can revoke any of these permissions at any time at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</p>
+  </section>
+
+  <!-- 10 -->
+  <section class="bv-section" id="bv-s10">
+    <h2><span class="bv-num">10.</span>Meta Platforms &amp; data deletion instructions</h2>
+    <p>When you connect a Meta product to Brainam, we comply with the <strong>Meta Platform Terms</strong>, <strong>Meta Developer Policies</strong>, and the <strong>WhatsApp Business Solution Terms</strong>.</p>
+
+    <h3>What we access</h3>
+    <ul>
+      <li><strong>Facebook / Instagram</strong> &mdash; Page metadata, messages received via Pages Messaging API, basic profile information of users who message your page.</li>
+      <li><strong>WhatsApp Business</strong> &mdash; messages sent and received through the WhatsApp Business Cloud API, business profile details, and message status callbacks.</li>
+    </ul>
+    <p>We use this data <strong>solely to operate the AI agent you have configured</strong> &mdash; for example, to reply to a customer message, log a conversation, or trigger a workflow.</p>
+
+    <h3>Data deletion instructions (Meta requirement)</h3>
+    <div class="bv-callout">
+      <p>Under Meta Platform Terms, you have the right to request deletion of data we have obtained via Meta integrations. To request deletion of your Meta-sourced data:</p>
+      <p>1.&nbsp;Email <strong>grievance@brainam.ai</strong> with the subject &ldquo;Meta Data Deletion Request&rdquo; and include the Facebook Page ID, Instagram username, or WhatsApp Business Account ID associated with your Brainam account; <strong>or</strong></p>
+      <p>2.&nbsp;Visit <a href="https://brainam.ai/data-deletion"><strong>brainam.ai/data-deletion</strong></a>, fill in the form, and select &ldquo;Meta-sourced data only.&rdquo;</p>
+      <p>We will confirm receipt within <strong>48 hours</strong> and complete deletion within <strong>30 days</strong>, after which we will email you a confirmation reference number.</p>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="bv-section" id="bv-s11">
+    <h2><span class="bv-num">11.</span>Disclosure, sub-processors &amp; international transfers</h2>
+    <p>We may share personal data with carefully selected service providers that support our business operations. Where such service providers process personal data on our behalf, we conclude data processing agreements pursuant to Article 28 GDPR, ensuring that personal data is processed solely in accordance with our instructions and in compliance with applicable data protection standards.</p>
+
+    <h3>Current sub-processors</h3>
+    <div class="bv-table-wrap">
+      <table class="bv-table">
+        <thead>
+          <tr>
+            <th>Sub-processor</th>
+            <th>Purpose</th>
+            <th>Data category</th>
+            <th>Region</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Anthropic</strong> (Claude)</td>
+            <td>LLM inference for agents</td>
+            <td>Prompts &amp; relevant context</td>
+            <td>USA</td>
+          </tr>
+          <tr>
+            <td><strong>OpenAI</strong></td>
+            <td>LLM inference, embeddings</td>
+            <td>Prompts &amp; relevant context</td>
+            <td>USA</td>
+          </tr>
+          <tr>
+            <td><strong>Google</strong> (Gemini API)</td>
+            <td>LLM inference, multimodal</td>
+            <td>Prompts &amp; relevant context</td>
+            <td>USA / EU</td>
+          </tr>
+          <tr>
+            <td><strong>Razorpay</strong></td>
+            <td>Payment processing</td>
+            <td>Billing &amp; payment data</td>
+            <td>India</td>
+          </tr>
+          <tr>
+            <td><strong>MongoDB Atlas</strong></td>
+            <td>Primary database hosting</td>
+            <td>All stored data (encrypted)</td>
+            <td>Singapore / India</td>
+          </tr>
+          <tr>
+            <td><strong>Render</strong></td>
+            <td>Application hosting</td>
+            <td>Application traffic</td>
+            <td>Singapore</td>
+          </tr>
+          <tr>
+            <td><strong>Cloudflare</strong></td>
+            <td>CDN, DDoS protection, edge security</td>
+            <td>Traffic &amp; device data</td>
+            <td>Global</td>
+          </tr>
+          <tr>
+            <td><strong>Resend</strong> / SES</td>
+            <td>Transactional email delivery</td>
+            <td>Contact data</td>
+            <td>USA</td>
+          </tr>
+          <tr>
+            <td><strong>PostHog</strong></td>
+            <td>Product analytics</td>
+            <td>Pseudonymised usage data</td>
+            <td>EU</td>
+          </tr>
+          <tr>
+            <td><strong>Sentry</strong></td>
+            <td>Error and crash reporting</td>
+            <td>Diagnostic data</td>
+            <td>USA</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>We update this list as our infrastructure changes. The current list is always available on this page. Enterprise customers can subscribe to advance notification of changes by writing to <a href="mailto:grievance@brainam.ai">grievance@brainam.ai</a>.</p>
+
+    <h3>Disclosures required by law</h3>
+    <p>We may disclose personal data where required by law or where such disclosure is necessary to comply with legal obligations or lawful requests by public authorities, courts, or law enforcement agencies, to enforce our commercial contracts, to investigate potential violations, to prevent or address fraud, security, or technical issues, or to protect our rights, property, users, or the public.</p>
+
+    <h3>International transfers</h3>
+    <p>Some of the recipients listed above are located outside India, the European Union (EU) or the European Economic Area (EEA), in particular in the United States. Where personal data is transferred to third countries, such transfers are carried out only where permitted under Articles 44 et seq. GDPR and are subject to appropriate safeguards. These include adequacy decisions such as the EU&ndash;U.S. Data Privacy Framework, Standard Contractual Clauses (SCCs) approved by the European Commission, and additional technical and organisational measures such as encryption and access controls.</p>
+
+    <h3>What we do not do</h3>
+    <p><strong>We do not sell your personal information. We do not rent it. We do not share it for cross-context behavioural advertising.</strong></p>
+  </section>
+
+  <!-- 12 -->
+  <section class="bv-section" id="bv-s12">
+    <h2><span class="bv-num">12.</span>Use of cookies</h2>
+    <p>Our website may use so-called cookies (small text files stored in your browser or on your device) and similar tracking technologies such as pixels or scripts. Cookies contain information about the current or last visit to our website. If cookies do not contain an exact expiration date they are stored only temporarily and are automatically deleted when you close your browser. Cookies with an expiration date will remain stored until the specified date or until you delete them manually.</p>
+    <p>We may use three types of cookies:</p>
+    <ul>
+      <li><strong>Essential cookies</strong> &mdash; required for the functionality of our website (authentication, session). These cannot be disabled.</li>
+      <li><strong>Functional &amp; performance cookies</strong> &mdash; help us improve your experience (preferences, language).</li>
+      <li><strong>Analytics &amp; advertising cookies</strong> &mdash; enable anonymous product usage analytics. We do <strong>not</strong> use cross-site advertising cookies.</li>
+    </ul>
+    <p>You can update or withdraw your cookie preferences at any time via the &ldquo;Cookie Settings&rdquo; button. You can further configure, block, and delete cookies in your browser settings. If you delete all cookies, some functions of our website or services may not display correctly.</p>
+  </section>
+
+  <!-- 13 -->
+  <section class="bv-section" id="bv-s13">
+    <h2><span class="bv-num">13.</span>Automated decision-making &amp; use of AI</h2>
+    <p>We do not make decisions about you that are based solely on automated processing (including profiling) and that produce legal effects concerning you or similarly significantly affect you, within the meaning of Article 22 GDPR. If we were to introduce such automated decision-making in exceptional cases in the future, we will inform you in advance where required by law and ensure appropriate safeguards are in place &mdash; including your right to obtain human intervention, to express your point of view and to contest the decision.</p>
+    <p>Brainam itself is an AI-powered platform: the agents you configure may make automated decisions on your behalf (for example, replying to a customer message). These decisions are made within the scope and rules you define, and you remain accountable for the outputs of agents in your workspace.</p>
+  </section>
+
+  <!-- 14 -->
+  <section class="bv-section" id="bv-s14">
+    <h2><span class="bv-num">14.</span>AI model training boundaries</h2>
+    <p>This section is critical. Please read it carefully.</p>
+
+    <h3>14.1 We do not train foundation models on your data</h3>
+    <p>Brainam does <strong>not</strong> use your training content, conversations, prompts, or uploaded files to train, fine-tune, or otherwise improve any general-purpose foundation model (such as Claude, GPT, Gemini, or any open-source model).</p>
+
+    <h3>14.2 Your data stays in your workspace</h3>
+    <p>The training content you upload is used <strong>exclusively</strong> to power your own AI agents in your own Brainam workspace. It is logically isolated from every other customer&rsquo;s data.</p>
+
+    <h3>14.3 Third-party AI sub-processors</h3>
+    <p>When your agent runs, prompts and necessary context are sent to one or more AI providers for inference. We work with Anthropic, OpenAI and Google. We rely on these providers&rsquo; API terms, which state that data sent through their APIs is <strong>not used to train their models</strong> (Anthropic: zero-retention API; OpenAI: API data not used for training; Google: Gemini API data not used for training).</p>
+
+    <h3>14.4 Improving Brainam&rsquo;s own components</h3>
+    <p>We may use <strong>aggregated, de-identified</strong> signals (such as &ldquo;X% of agents fail at step Y&rdquo;) to improve Brainam&rsquo;s own routing, retries, and chip-billing logic. We do not read individual prompts or outputs for this purpose, and no customer content leaves your workspace in identifiable form.</p>
+  </section>
+
+  <!-- 15 -->
+  <section class="bv-section" id="bv-s15">
+    <h2><span class="bv-num">15.</span>How long we keep your data</h2>
+    <p>We store your personal information for no longer than necessary for the purposes for which it was processed, including to satisfy any legal or reporting requirements, and in accordance with our legal obligations and legitimate business interests.</p>
+
+    <div class="bv-table-wrap">
+      <table class="bv-table">
+        <thead>
+          <tr>
+            <th>Data type</th>
+            <th>Retention period</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Account data</td><td>Until you delete the account, plus 90 days for backup expiry.</td></tr>
+          <tr><td>Training content &amp; knowledge files</td><td>Until you delete them or close the account.</td></tr>
+          <tr><td>Conversation logs</td><td>12 months by default; configurable per agent.</td></tr>
+          <tr><td>Billing &amp; tax records</td><td>8 years (Indian statutory requirement).</td></tr>
+          <tr><td>Security &amp; access logs</td><td>12 months.</td></tr>
+          <tr><td>Marketing preferences</td><td>Until you opt out.</td></tr>
+          <tr><td>De-identified aggregate data</td><td>Indefinite.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="bv-section" id="bv-s16">
+    <h2><span class="bv-num">16.</span>Data deletion requests</h2>
+    <p>To delete your Brainam account and all associated data:</p>
+    <ul>
+      <li>Sign in to Brainam and go to <strong>Settings &rarr; Account &rarr; Delete Account</strong>, <strong>or</strong></li>
+      <li>Visit <a href="https://brainam.ai/data-deletion">brainam.ai/data-deletion</a> and submit the form, <strong>or</strong></li>
+      <li>Email <a href="mailto:grievance@brainam.ai">grievance@brainam.ai</a> with the subject &ldquo;Account Deletion Request.&rdquo;</li>
+    </ul>
+    <p>Deletion is completed within <strong>30 days</strong>, except for records we are legally required to retain (e.g. tax invoices for 8 years).</p>
+  </section>
+
+  <!-- 17 -->
+  <section class="bv-section" id="bv-s17">
+    <h2><span class="bv-num">17.</span>Your rights under data protection laws</h2>
+
+    <h3>17.1 Under the DPDP Act, 2023 (India)</h3>
+    <p>As a Data Principal you have the right to:</p>
+    <ul>
+      <li>Access the personal data we hold about you.</li>
+      <li>Correction and erasure of inaccurate or no-longer-required data.</li>
+      <li>Grievance redressal through our Grievance Officer (Section 21).</li>
+      <li>Nominate another person to exercise your rights in the event of death or incapacity.</li>
+      <li>Withdraw consent at any time, without affecting prior lawful processing.</li>
+    </ul>
+
+    <h3>17.2 Under GDPR / UK GDPR</h3>
+    <ul>
+      <li>Right to access your data (Art. 15).</li>
+      <li>Right to correct your data (Art. 16).</li>
+      <li>Right to have your data deleted (Art. 17).</li>
+      <li>Right to restrict processing (Art. 18).</li>
+      <li>Right to data portability (Art. 20).</li>
+      <li>Right to object to processing (Art. 21).</li>
+      <li>Right to withdraw consent (Art. 7(3)).</li>
+      <li>Right to lodge a complaint with a supervisory authority (Art. 77).</li>
+    </ul>
+
+    <h3>17.3 Under CCPA / CPRA (California)</h3>
+    <p>You have the right to know, delete, correct, and opt out of any &ldquo;sale&rdquo; or &ldquo;sharing&rdquo; of personal information &mdash; though Brainam does not sell or share personal information for cross-context behavioural advertising.</p>
+
+    <h3>17.4 How to exercise your rights</h3>
+    <p>Email <a href="mailto:grievance@brainam.ai">grievance@brainam.ai</a> or use the in-product <strong>Privacy &amp; Data</strong> page. We will respond within <strong>30 days</strong> (or earlier where law requires).</p>
+  </section>
+
+  <!-- 18 -->
+  <section class="bv-section" id="bv-s18">
+    <h2><span class="bv-num">18.</span>Children&rsquo;s privacy</h2>
+    <p>Brainam is intended for business use by adults (18+). We do not knowingly collect personal data from children under 18. If you become aware that a child has provided us with personal information, please contact <a href="mailto:grievance@brainam.ai">grievance@brainam.ai</a> and we will delete it.</p>
+  </section>
+
+  <!-- 19 -->
+  <section class="bv-section" id="bv-s19">
+    <h2><span class="bv-num">19.</span>Security</h2>
+    <p>We protect your data with:</p>
+    <ul>
+      <li>TLS 1.2+ encryption in transit.</li>
+      <li>AES-256 encryption at rest.</li>
+      <li>Role-based access control and least-privilege administration.</li>
+      <li>Encrypted secrets vault for OAuth tokens and API keys.</li>
+      <li>Regular vulnerability scanning and dependency patching.</li>
+      <li>Audit logs for all admin actions.</li>
+    </ul>
+    <p>No system is ever 100% secure. If we become aware of a personal data breach that is likely to affect you, we will notify you and the relevant authority within the timelines required by law (within 72 hours under DPDP and GDPR). For more detail see our <a href="https://brainam.ai/security">Security page</a>.</p>
+  </section>
+
+  <!-- 20 -->
+  <section class="bv-section" id="bv-s20">
+    <h2><span class="bv-num">20.</span>Changes to this policy</h2>
+    <p>We may update this Privacy Policy from time to time. Material changes will be notified by email and in-product banner at least <strong>30 days</strong> before they take effect. The latest version is always available at <a href="https://brainam.ai/privacy">brainam.ai/privacy</a>, with the &ldquo;Effective Date&rdquo; and &ldquo;Version&rdquo; updated at the top.</p>
+  </section>
+
+  <!-- 21 -->
+  <section class="bv-section" id="bv-s21">
+    <h2><span class="bv-num">21.</span>Grievance Officer (India / DPDP)</h2>
+    <p>In accordance with the DPDP Act, 2023 and the Information Technology (Intermediary Guidelines) Rules, 2021, the following officer has been appointed to address your concerns:</p>
+    <div class="bv-contact-grid">
+      <div class="bv-contact-card">
+        <div class="bv-label">Grievance Officer</div>
+        <div class="bv-value">Sachin Arora</div>
+      </div>
+      <div class="bv-contact-card">
+        <div class="bv-label">Email</div>
+        <div class="bv-value">grievance@brainam.ai</div>
+      </div>
+      <div class="bv-contact-card">
+        <div class="bv-label">Office Address</div>
+        <div class="bv-value">Taku Ventures Private Limited,<br>Shop No. 313, 3rd Floor,<br>Aggarwal Square Plaza,Dwarka Sector 12,<br>Dwarka,New Delhi,<br>New Delhi 110078, India</div>
+      </div>
+      <div class="bv-contact-card">
+        <div class="bv-label">Response Time</div>
+        <div class="bv-value">Acknowledgement within 48 hours; resolution within 30 days.</div>
+      </div>
+    </div>
+    <p style="margin-top:16px;">If you are not satisfied with our response, you may approach the <strong>Data Protection Board of India</strong> under the DPDP Act, 2023.</p>
+  </section>
+
+  <!-- 22 -->
+  <section class="bv-section" id="bv-s22">
+    <h2><span class="bv-num">22.</span>Contact us</h2>
+    <div class="bv-contact-grid">
+      <div class="bv-contact-card">
+        <div class="bv-label">General Queries</div>
+        <div class="bv-value">hello@brainam.ai</div>
+      </div>
+      <div class="bv-contact-card">
+        <div class="bv-label">Privacy &amp; Data Rights</div>
+        <div class="bv-value">grievance@brainam.ai</div>
+      </div>
+      <div class="bv-contact-card">
+        <div class="bv-label">Security Disclosures</div>
+        <div class="bv-value">security@brainam.ai</div>
+      </div>
+      <div class="bv-contact-card">
+        <div class="bv-label">Billing</div>
+        <div class="bv-value">hello@brainam.ai</div>
+      </div>
+    </div>
+
+    <!-- Entity disclosure strip (matches contact + about pages) -->
+    <div class="bv-legal-strip">
+      <span><strong>Operated by:</strong> Taku Ventures Private Limited</span>
+      <span class="bv-legal-sep" aria-hidden="true"></span>
+      <span><strong>CIN:</strong> U79110DL2024PTC431506</span>
+      <span class="bv-legal-sep" aria-hidden="true"></span>
+      <span><strong>GSTIN:</strong> 07AALCT0078R1ZL</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bv-footer">
+    <p>This Privacy Policy is governed by the laws of India. Any disputes shall be subject to the exclusive jurisdiction of the courts at <strong>New Delhi, India</strong>.</p>
+    <p>&copy; 2026 Taku Ventures Private Limited &middot; Operating: Shop No. 313, 3rd Floor,Aggarwal Square Plaza,Dwarka Sector 12,Dwarka,New Delhi,New Delhi 110078, India &middot; Registered: F-12, Najafgarh, New Delhi 110043</p>
+    <p>Version 1.0 &middot; Last updated 23 May 2026</p>
+  </footer>
+
+</div>
+</div>
+
+<!--
+  Two scripts:
+  1. Link-breakout: any external link inside this iframe will navigate
+     the parent Framer window instead of staying trapped in the iframe.
+     Internal hash links (e.g. #bv-s2) stay in-iframe so the TOC keeps
+     working correctly.
+  2. Auto-resize broadcaster: tells Framer how tall the iframe wants to
+     be so the embed can be set to "Fit Content".
+-->
+<script>
+(function () {
+  // 1. Link breakout for external links
+  function breakoutLinks() {
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (href && !href.startsWith('#') && !a.hasAttribute('target')) {
+        a.setAttribute('target', '_top');
+      }
+    });
+  }
+
+  // 2. Auto-resize broadcaster
+  function measure() {
+    var d = document, b = d.body, h = d.documentElement;
+    return Math.max(
+      b.scrollHeight, b.offsetHeight,
+      h.scrollHeight, h.offsetHeight, h.clientHeight
+    );
+  }
+  var lastSent = -1;
+  function send(force) {
+    var h = measure();
+    if (!force && Math.abs(h - lastSent) < 4) return;
+    lastSent = h;
+    try {
+      window.parent.postMessage({
+        source: 'brainam-privacy',
+        type:   'brainam:resize',
+        height: h
+      }, '*');
+    } catch (e) { /* parent unreachable */ }
+  }
+
+  // Run both on load
+  function init() {
+    breakoutLinks();
+    send(true);
+  }
+  if (document.readyState === 'complete') init();
+  else window.addEventListener('load', init);
+
+  window.addEventListener('resize', function () { send(false); });
+  setInterval(function () { send(false); }, 350);
+})();
+</script>
+</body>
+</html>
