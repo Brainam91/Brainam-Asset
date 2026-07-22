@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Brainam — Customer Data Flow Map</title>
+<style>
+  :root {
+    --bg: #0d0d0d; --panel: #161616; --card: #1c1c1c;
+    --bd: #2a2a2a; --bd-hi: #3a3a3a;
+    --fg: #f0f0f0; --fg-md: #b8b8b8; --fg-lo: #71717a;
+    --accent: #6c5ce7; --accent-bg: #2d1f63;
+    --green: #10b981; --amber: #f59e0b; --red: #ef4444; --cyan: #06b6d4;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 40px 24px 80px;
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg); color: var(--fg);
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  h1 { font-size: 28px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.5px; }
+  h1 .accent { color: var(--accent); }
+  .sub { color: var(--fg-md); font-size: 14px; margin: 0 0 32px; }
+  h2 { font-size: 18px; font-weight: 700; margin: 36px 0 14px; color: var(--fg); border-bottom: 1px solid var(--bd); padding-bottom: 8px; }
+  h3 { font-size: 14px; font-weight: 700; margin: 0 0 6px; color: var(--fg); }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 0 0 24px; font-size: 12px; color: var(--fg-md); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .swatch { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+  .sw-ui    { background: var(--cyan); }
+  .sw-route { background: var(--green); }
+  .sw-svc   { background: var(--amber); }
+  .sw-model { background: var(--accent); }
+  .chain { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    border: 1px solid var(--bd); border-radius: 12px;
+    background: var(--card); padding: 16px 18px;
+    position: relative;
+  }
+  .step + .step { margin-top: 14px; }
+  .step + .step::before {
+    content: ''; position: absolute; top: -14px; left: 28px;
+    width: 2px; height: 14px; background: var(--bd-hi);
+  }
+  .step .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--accent); color: #fff; font-weight: 800; font-size: 12px;
+    margin-right: 10px;
+  }
+  .step .title { font-size: 15px; font-weight: 700; display: inline-block; vertical-align: middle; }
+  .step .desc { color: var(--fg-md); font-size: 13px; margin: 8px 0 12px; }
+  .files { display: flex; flex-wrap: wrap; gap: 8px; }
+  .file {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11.5px; padding: 4px 9px; border-radius: 6px;
+    border: 1px solid var(--bd); background: rgba(255,255,255,0.02); color: var(--fg);
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .file::before { content: ''; width: 7px; height: 7px; border-radius: 50%; }
+  .file.ui::before    { background: var(--cyan); }
+  .file.route::before { background: var(--green); }
+  .file.svc::before   { background: var(--amber); }
+  .file.model::before { background: var(--accent); }
+  .file .anno { color: var(--fg-lo); font-style: italic; margin-left: 4px; }
+  .note {
+    margin-top: 10px; padding: 8px 12px; border-radius: 8px;
+    background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3);
+    font-size: 12.5px; color: #fcd34d;
+  }
+  .note strong { color: #fde68a; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 8px; }
+  .trig {
+    border: 1px solid var(--bd); border-radius: 10px;
+    background: var(--card); padding: 14px;
+  }
+  .trig h3 { font-size: 13px; }
+  .trig .lookup { color: var(--fg-lo); font-size: 11.5px; margin-top: 4px; }
+  .trig .files { margin-top: 10px; }
+  .cheat {
+    margin-top: 12px;
+    border: 1px solid var(--bd); border-radius: 12px;
+    background: var(--panel); padding: 14px 18px;
+  }
+  .cheat table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .cheat th, .cheat td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--bd); }
+  .cheat th { color: var(--fg-lo); font-weight: 600; text-transform: uppercase; font-size: 10.5px; letter-spacing: 1px; }
+  .cheat td.path { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: var(--fg); }
+  footer {
+    margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--bd);
+    color: var(--fg-lo); font-size: 11.5px; text-align: center;
+  }
+  footer code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: var(--fg-md); }
+  @media print {
+    body { background: #fff; color: #111; }
+    .step, .trig, .cheat { background: #fafafa; border-color: #ddd; }
+    h1, h2, h3 { color: #111; }
+    .file { background: #fff; color: #111; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Brainam — <span class="accent">customer data flow</span></h1>
+<p class="sub">From sign-up to a live agent firing. Each step lists the file(s) you'll need to open. <strong>Read top to bottom.</strong></p>
+
+<div class="legend">
+  <span><span class="swatch sw-ui"></span>UI / Wizard</span>
+  <span><span class="swatch sw-route"></span>HTTP route</span>
+  <span><span class="swatch sw-svc"></span>Service / worker</span>
+  <span><span class="swatch sw-model"></span>Mongoose model</span>
+</div>
+
+<h2>The flow</h2>
+<div class="chain">
+
+  <div class="step">
+    <span class="num">1</span><span class="title">Customer signs up</span>
+    <div class="desc">Email + name + phone + business name (and optional Google OAuth). Two collections written: <em>full profile</em> on User, <em>identity snapshot</em> on Workspace.</div>
+    <div class="files">
+      <span class="file route">server/routes/auth.ts <span class="anno">POST /api/auth/register</span></span>
+      <span class="file route">server/routes/auth.ts:23–36 <span class="anno">ensureDefaultWorkspace()</span></span>
+      <span class="file model">server/models/User.ts <span class="anno">full profile</span></span>
+      <span class="file model">server/models/Workspace.ts <span class="anno">identity snapshot</span></span>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="num">2</span><span class="title">Customer picks account type</span>
+    <div class="desc">Individual / team / business etc. Writes to Workspace (not User). The frontend's Onboarding screen calls a tiny POST.</div>
+    <div class="files">
+      <span class="file ui">client/src/pages/OnboardingProfile.tsx</span>
+      <span class="file route">server/routes/onboarding.ts:206 <span class="anno">POST /api/onboarding/type</span></span>
+      <span class="file model">server/models/Workspace.ts <span class="anno">accountTypes, primary</span></span>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="num">3</span><span class="title">Tara conversation — questions, text, voice, files</span>
+    <div class="desc">Tara reads what's on Workspace, asks the next question, customer's reply (typed or transcribed from Whisper or extracted from PDF) lands back on the same Workspace.</div>
+    <div class="files">
+      <span class="file ui">client/src/pages/OnboardingProfile.tsx</span>
+      <span class="file route">server/routes/onboarding.ts <span class="anno">/turn /transcribe /extract-file</span></span>
+      <span class="file svc">server/services/tara.ts <span class="anno">prompt + reply</span></span>
+      <span class="file model">server/models/Workspace.ts <span class="anno">conversationHistory[], whisper[], structuredBrief</span></span>
+      <span class="file model">server/models/WorkspaceKnowledgeFile.ts <span class="anno">source='tara'</span></span>
+      <span class="file model">server/models/WorkspaceKnowledgeChunk.ts</span>
+    </div>
+    <div class="note"><strong>Correction to step 3 of the original sketch:</strong> Tara's chat transcript lives INLINE on <code>Workspace.conversationHistory[]</code>. There's no separate transcript model. Audio + document text DO get their own collections (WorkspaceKnowledgeFile + WorkspaceKnowledgeChunk).</div>
+  </div>
+
+  <div class="step">
+    <span class="num">4</span><span class="title">Customer adds knowledge from the dashboard</span>
+    <div class="desc">PDFs, links, drag-and-drop. Same plumbing as Tara's uploads — just a different <code>source</code> tag.</div>
+    <div class="files">
+      <span class="file route">server/routes/workspaceKnowledge.ts <span class="anno">POST /api/knowledge</span></span>
+      <span class="file model">server/models/WorkspaceKnowledgeFile.ts <span class="anno">source='dashboard'</span></span>
+      <span class="file model">server/models/WorkspaceKnowledgeChunk.ts</span>
+      <span class="file svc">server/services/ChromaService.ts <span class="anno">vector embeddings</span></span>
+    </div>
+    <div class="note"><strong>Correction to step 4 of the original sketch:</strong> Knowledge is NOT a field on Workspace. It's two dedicated collections (<code>WorkspaceKnowledgeFile</code> + <code>WorkspaceKnowledgeChunk</code>) scoped by <code>workspaceId</code>. Both sources (Tara + dashboard) share the same collections.</div>
+  </div>
+
+  <div class="step">
+    <span class="num">5</span><span class="title">Customer clicks "Build agent"</span>
+    <div class="desc">Wizard opens. They pick the trigger app first (chat / email / webhook / schedule), then name the agent, then Jiya does a short clarifying chat, then Divya writes the basePrompt asynchronously.</div>
+    <div class="files">
+      <span class="file ui">client/src/components/AgentSetupWizard.tsx</span>
+      <span class="file route">server/routes/agents.ts <span class="anno">POST /api/agents/reserve</span></span>
+      <span class="file route">server/routes/agents.ts <span class="anno">POST /api/agents/setup</span></span>
+      <span class="file svc">server/services/jiya.ts <span class="anno">clarifying chat</span></span>
+      <span class="file svc">server/services/divyaFromDigest.ts <span class="anno">writes basePrompt</span></span>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="num">6</span><span class="title">Agent record is created</span>
+    <div class="desc">The agent's name, model, base prompt, capability flags, schedule fields, etc. all land on a single document.</div>
+    <div class="files">
+      <span class="file model">server/models/AgentConfig.ts <span class="anno">the agent</span></span>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="num">7</span><span class="title">Trigger row is dual-written</span>
+    <div class="desc">Whichever trigger the customer picked, <code>/setup</code> writes the per-trigger field on AgentConfig AND upserts a row on the canonical Trigger collection. <strong>Both collections agree.</strong></div>
+    <div class="files">
+      <span class="file model">server/models/AgentConfig.ts <span class="anno">chatSlug / webhookToken / emailAddress / scheduleEnabled</span></span>
+      <span class="file model">server/models/Trigger.ts <span class="anno">{ agentId, type, slug, enabled }</span></span>
+    </div>
+    <div class="note"><strong>Correction to step 7 of the original sketch:</strong> Trigger pick goes to BOTH stores, not just Trigger.ts. AgentConfig holds the per-trigger fields (chatSlug, webhookToken, emailAddress, scheduleEnabled) as the read primary; Trigger holds the canonical row that's mainly used for cross-cutting features like deletion + audit. See per-trigger lookup order below.</div>
+  </div>
+
+  <div class="step">
+    <span class="num">8</span><span class="title">Inbound event fires the agent</span>
+    <div class="desc">Customer's URL gets visited, webhook delivered, email forwarded, or cron tick happens. Each trigger has its own public route, its own lookup, its own hardened gate stack.</div>
+    <div class="files">
+      <span class="file route">server/routes/publicChat.ts <span class="anno">POST /api/chat/:slug</span></span>
+      <span class="file route">server/routes/brainamWebhook.ts <span class="anno">POST /api/webhook/:token</span></span>
+      <span class="file route">server/routes/emailWebhook.ts <span class="anno">POST /webhook/email</span></span>
+      <span class="file route">server/routes/agents.ts <span class="anno">fireScheduledAgent() — cron callback</span></span>
+      <span class="file svc">server/services/AgentRuntime.ts <span class="anno">the LLM call</span></span>
+      <span class="file svc">server/services/ChipService.ts <span class="anno">wallet metering</span></span>
+    </div>
+    <div class="note"><strong>Correction to step 8 of the original sketch:</strong> AgentConfig does NOT read from Trigger — it's the other way around in some cases. Chat/Email/Schedule routes look up <em>only</em> AgentConfig (chatSlug / emailAddress / triggerType='schedule'). Webhook is the one trigger that also consults Trigger, and only as a fallback when AgentConfig misses. See the per-trigger table.</div>
+  </div>
+
+</div>
+
+<h2>The four triggers — read order on the inbound route</h2>
+<div class="grid">
+
+  <div class="trig">
+    <h3>Brainam Chat</h3>
+    <div class="lookup">AgentConfig only · slug = customer-picked kebab-case</div>
+    <div class="files">
+      <span class="file route">server/routes/publicChat.ts</span>
+      <span class="file model">AgentConfig.chatSlug</span>
+    </div>
+  </div>
+
+  <div class="trig">
+    <h3>Brainam Webhook</h3>
+    <div class="lookup">AgentConfig primary → Trigger fallback · slug = 160-bit opaque token</div>
+    <div class="files">
+      <span class="file route">server/routes/brainamWebhook.ts</span>
+      <span class="file model">AgentConfig.webhookToken</span>
+      <span class="file model">Trigger.slug (type='webhook')</span>
+    </div>
+  </div>
+
+  <div class="trig">
+    <h3>Brainam Email</h3>
+    <div class="lookup">AgentConfig only · slug = local part of <code>local@mail.brainam.ai</code></div>
+    <div class="files">
+      <span class="file route">server/routes/emailWebhook.ts</span>
+      <span class="file model">AgentConfig.emailAddress</span>
+    </div>
+  </div>
+
+  <div class="trig">
+    <h3>Brainam Schedule</h3>
+    <div class="lookup">No inbound lookup · cron registered at startup from AgentConfig.find({ triggerType:'schedule' })</div>
+    <div class="files">
+      <span class="file route">server/routes/agents.ts <span class="anno">registerAgentSchedule / fireScheduledAgent</span></span>
+      <span class="file model">AgentConfig.scheduleTime, scheduleFrequency, scheduleEnabled</span>
+    </div>
+  </div>
+
+</div>
+
+<h2>"Open these files first" cheat sheet</h2>
+<div class="cheat">
+<table>
+<thead><tr><th>If you're working on…</th><th>Open this first</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Sign-up / login</td><td class="path">server/routes/auth.ts</td><td>register + login + Google OAuth + ensureDefaultWorkspace</td></tr>
+<tr><td>The user account</td><td class="path">server/models/User.ts</td><td>profile, accountType, googleId, defaultWorkspaceId</td></tr>
+<tr><td>The workspace (tenant)</td><td class="path">server/models/Workspace.ts</td><td>identity snapshot + Tara state + knowledge scope</td></tr>
+<tr><td>The Tara onboarding flow</td><td class="path">server/routes/onboarding.ts + server/services/tara.ts</td><td>/turn, /transcribe, /extract-file → Workspace.*</td></tr>
+<tr><td>Dashboard knowledge uploads</td><td class="path">server/routes/workspaceKnowledge.ts + server/models/WorkspaceKnowledgeFile.ts</td><td>source='dashboard'; chunks in WorkspaceKnowledgeChunk</td></tr>
+<tr><td>Building an agent (the wizard)</td><td class="path">client/src/components/AgentSetupWizard.tsx + server/routes/agents.ts</td><td>/api/agents/reserve → /api/agents/setup</td></tr>
+<tr><td>The agent record</td><td class="path">server/models/AgentConfig.ts</td><td>name, basePrompt, model, every trigger's local fields</td></tr>
+<tr><td>The canonical trigger row</td><td class="path">server/models/Trigger.ts</td><td>{ agentId, type:'chat'|'email'|'webhook'|'schedule', slug, enabled }</td></tr>
+<tr><td>Live chat coming in</td><td class="path">server/routes/publicChat.ts</td><td>POST /api/chat/:slug → AgentConfig.chatSlug lookup</td></tr>
+<tr><td>Inbound webhook</td><td class="path">server/routes/brainamWebhook.ts</td><td>POST /api/webhook/:token → AgentConfig primary, Trigger fallback</td></tr>
+<tr><td>Inbound email</td><td class="path">server/routes/emailWebhook.ts</td><td>POST /webhook/email → AgentConfig.emailAddress lookup</td></tr>
+<tr><td>Scheduled cron fire</td><td class="path">server/routes/agents.ts <code>fireScheduledAgent</code></td><td>10-stage pipeline: gates → lock → chips → LLM → routing → status</td></tr>
+<tr><td>LLM call (any trigger)</td><td class="path">server/services/AgentRuntime.ts</td><td>provider/model resolution + tool use + deep-thinking</td></tr>
+<tr><td>Wallet metering</td><td class="path">server/services/ChipService.ts</td><td>reserveChips → finalizeChipReservation / releaseChipReservation</td></tr>
+</tbody>
+</table>
+</div>
+
+<footer>
+Models are in <code>server/models/</code>. Routes are in <code>server/routes/</code>. Services are in <code>server/services/</code>. UI is in <code>client/src/</code>.
+<br>If a file isn't on this map, you probably don't need to open it.
+</footer>
+
+</div>
+</body>
+</html>
