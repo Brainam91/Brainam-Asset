@@ -383,7 +383,7 @@
       <li><strong>Training content</strong> &mdash; documents, prompts, sample conversations, knowledge files, images, and any other content you upload to train your AI agents.</li>
       <li><strong>Marketing data</strong> &mdash; contact preferences, newsletter subscriptions, email engagement, and registrations for events, webinars, or product updates.</li>
       <li><strong>Traffic &amp; device data</strong> &mdash; IP address, device and browser type, operating system, language settings, access times, device identifiers and tokens, log files, HTTP request data, feature interactions and associated usage metrics.</li>
-      <li><strong>Integration data</strong> &mdash; data received from third-party apps you connect (e.g. Gmail, WhatsApp, Instagram, Zoho) under the OAuth scopes you authorise.</li>
+      <li><strong>Integration data</strong> &mdash; data received from third-party apps you connect (e.g. Google Workspace, WhatsApp, Instagram, Zoho) under the OAuth scopes you authorise.</li>
     </ul>
   </section>
 
@@ -482,7 +482,7 @@
     </div>
     <p>Specifically:</p>
     <ul>
-      <li>We use Google user data <strong>only</strong> to provide and improve user-facing features that are prominent in the Brainam interface (such as reading and sending email on the user&rsquo;s behalf, reading calendar events, or accessing Drive files the user explicitly selects).</li>
+      <li>We use Google user data <strong>only</strong> to provide and improve user-facing features that are prominent in the Brainam interface (such as reading and writing rows in your Google Sheets, reading your Google Form responses, creating and updating events on your Google Calendar, and handling the Google Drive files that Brainam itself creates).</li>
       <li>We <strong>do not</strong> use Google user data for serving advertisements.</li>
       <li>We <strong>do not</strong> transfer Google user data to third parties except as necessary to provide or improve user-facing features, comply with applicable law, or as part of a merger, acquisition, or sale of assets with the user&rsquo;s explicit consent.</li>
       <li>We <strong>do not</strong> allow humans to read Google user data unless: (a) we have the user&rsquo;s affirmative agreement for specific messages, (b) it is necessary for security purposes (e.g., investigating abuse), (c) it is necessary to comply with applicable law, or (d) the data is aggregated and used for internal operations in accordance with applicable privacy laws.</li>
@@ -491,11 +491,14 @@
     <h3>OAuth scopes we may request</h3>
     <p>We only request the scopes required to power the integration you enable:</p>
     <ul>
-      <li><code>gmail.readonly</code>, <code>gmail.send</code>, <code>gmail.modify</code> &mdash; for email-handling agents.</li>
-      <li><code>calendar.readonly</code>, <code>calendar.events</code> &mdash; for scheduling agents.</li>
-      <li><code>drive.readonly</code>, <code>drive.file</code> &mdash; for document-handling agents.</li>
-      <li><code>userinfo.email</code>, <code>userinfo.profile</code> &mdash; for sign-in only.</li>
+      <li><code>https://www.googleapis.com/auth/spreadsheets</code> &mdash; read and write rows in your Google Sheets on your behalf.</li>
+      <li><code>https://www.googleapis.com/auth/forms.body</code> &mdash; create and edit your Google Forms.</li>
+      <li><code>https://www.googleapis.com/auth/forms.responses.readonly</code> &mdash; read the responses submitted to your Google Forms.</li>
+      <li><code>https://www.googleapis.com/auth/calendar.events</code> &mdash; view, create, and update events on your Google Calendar.</li>
+      <li><code>https://www.googleapis.com/auth/drive.file</code> &mdash; access only the specific Google Drive files that Brainam creates or you open with it (not your whole Drive).</li>
+      <li><code>openid</code>, <code>userinfo.email</code>, <code>userinfo.profile</code> &mdash; for sign-in only.</li>
     </ul>
+    <p>Brainam does <strong>not</strong> request access to Gmail or to your entire Google Drive. Your AI agent uses this data only to work with the Google Sheets, Forms, Calendar events, and Drive files you direct it to within Brainam.</p>
     <p>You can revoke any of these permissions at any time at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</p>
   </section>
 
