@@ -277,8 +277,8 @@
     <h1 class="bv-title">Privacy Policy</h1>
     <div class="bv-meta">
       <span><strong>Effective:</strong> 23 May 2026</span>
-      <span><strong>Last updated:</strong> 23 May 2026</span>
-      <span><strong>Version:</strong> 1.0</span>
+      <span><strong>Last updated:</strong> 28 July 2026</span>
+      <span><strong>Version:</strong> 1.1</span>
     </div>
   </header>
 
@@ -365,7 +365,7 @@
     <ul>
       <li><strong>Personal Data / Personal Information</strong> &mdash; any information that identifies you or can reasonably be linked to you.</li>
       <li><strong>Data Principal</strong> &mdash; the individual to whom personal data relates (DPDP Act).</li>
-      <li><strong>Data Fiduciary</strong> &mdash; the entity that determines the purpose and means of processing personal data &mdash; Brainam (Brainam Technologies Private Limited), in respect of customer accounts.</li>
+      <li><strong>Data Fiduciary</strong> &mdash; the entity that determines the purpose and means of processing personal data &mdash; Brainam (Brainam Technologies Private Limited), in respect of customer accounts. Where personal data belongs to a business customer&rsquo;s own end-users (for example, people who message that business on WhatsApp or Instagram), the <strong>business customer is the Data Fiduciary</strong> and Brainam acts as its <strong>Data Processor</strong> (see Section 10).</li>
       <li><strong>Data Processor / Sub-processor</strong> &mdash; a third party that processes data on our behalf under contract.</li>
       <li><strong>Processing</strong> &mdash; any operation performed on personal data &mdash; collection, storage, use, sharing, deletion, etc.</li>
       <li><strong>Customer</strong> &mdash; a business or individual that has signed up for a Brainam account, paid or free.</li>
@@ -506,14 +506,24 @@
   <!-- 10 -->
   <section class="bv-section" id="bv-s10">
     <h2><span class="bv-num">10.</span>Meta Platforms &amp; data deletion instructions</h2>
-    <p>When you connect a Meta product to Brainam, we comply with the <strong>Meta Platform Terms</strong>, <strong>Meta Developer Policies</strong>, and the <strong>WhatsApp Business Solution Terms</strong>.</p>
+    <p>When you connect a Meta product to Brainam, we strictly comply with the <strong>Meta Platform Terms</strong>, <strong>Meta Developer Policies</strong>, the <strong>Meta Business Messaging Policy</strong>, and the <strong>WhatsApp Business Solution Terms</strong>.</p>
 
     <h3>What we access</h3>
     <ul>
-      <li><strong>Facebook / Instagram</strong> &mdash; Page metadata, messages received via Pages Messaging API, basic profile information of users who message your page.</li>
-      <li><strong>WhatsApp Business</strong> &mdash; messages sent and received through the WhatsApp Business Cloud API, business profile details, and message status callbacks.</li>
+      <li><strong>Facebook / Instagram</strong> &mdash; Facebook Page and connected Instagram Business/Creator account metadata, and permission to publish posts and captions that you have reviewed and approved. Brainam does <strong>not</strong> read, send, or automate Instagram or Facebook direct messages.</li>
+      <li><strong>WhatsApp Business</strong> &mdash; messages sent and received through the WhatsApp Business Cloud API, your end-customers&rsquo; phone numbers and WhatsApp profile names, business profile details, and message status callbacks.</li>
     </ul>
+    <p>We access and process this data strictly through <strong>official Meta APIs</strong> &mdash; the <strong>WhatsApp Business Cloud API</strong> and, where you connect them, the <strong>Instagram Graph API</strong> and <strong>Facebook Pages API</strong>. For WhatsApp we request the permissions <strong>whatsapp_business_messaging</strong> and <strong>whatsapp_business_management</strong>, used exclusively to route and respond to your customers&rsquo; messages and to manage the WhatsApp Business Account you connect. For Instagram and Facebook <strong>content publishing</strong>, we request <strong>instagram_basic</strong>, <strong>instagram_content_publish</strong>, <strong>pages_show_list</strong>, <strong>pages_read_engagement</strong>, and <strong>pages_manage_posts</strong>, used exclusively to publish the posts and captions that you have explicitly reviewed and approved within Brainam &mdash; not for direct messaging or unsolicited outreach. We request only the permissions required for the integrations you actually enable.</p>
     <p>We use this data <strong>solely to operate the AI agent you have configured</strong> &mdash; for example, to reply to a customer message, log a conversation, or trigger a workflow.</p>
+
+    <h3>Our role &mdash; controller vs processor</h3>
+    <p>When you (a Brainam business customer) connect your own WhatsApp Business or Instagram/Facebook account &mdash; including through Meta&rsquo;s <strong>Embedded Signup</strong> flow inside Brainam, where you attach your own WhatsApp Business Account and phone number without leaving our product &mdash; you remain the <strong>controller / Data Fiduciary</strong> of your end-customers&rsquo; personal data (their phone numbers, profile names, and message content). For that end-customer data, <strong>Brainam acts only as your Data Processor</strong>, processing it strictly on your documented instructions to operate the AI agent you configured, and never for our own purposes.</p>
+
+    <h3>Consent &amp; opt-in</h3>
+    <p>You are responsible for obtaining and maintaining any consent or opt-in required from your end-customers before you message them. In particular, a clear opt-in is required before sending <strong>business-initiated (template)</strong> WhatsApp messages, as required by the WhatsApp Business Messaging Policy; replies you send within the messaging window opened by a customer&rsquo;s own inbound message do not require prior opt-in. Brainam provides tools to capture opt-in and <strong>retains a record of each opt-in (identifier, timestamp, and source)</strong> so that consent is auditable, and will not send a business-initiated message to a recipient who has no recorded opt-in.</p>
+
+    <h3>No AI-model training on Meta data</h3>
+    <p>Data obtained through your WhatsApp, Instagram, or Facebook integrations &mdash; including your end-customers&rsquo; message content and phone numbers &mdash; is <strong>never used to train, fine-tune, or improve any AI or LLM model</strong>. Where such data is passed transiently to an AI sub-processor to generate a reply or action you initiated, it is sent solely for that purpose, under API terms that prohibit training on it, and is not retained by that provider for training.</p>
 
     <h3>Data deletion instructions (Meta requirement)</h3>
     <div class="bv-callout">
@@ -521,6 +531,7 @@
       <p>1.&nbsp;Email <strong>grievance@brainam.ai</strong> with the subject &ldquo;Meta Data Deletion Request&rdquo; and include the Facebook Page ID, Instagram username, or WhatsApp Business Account ID associated with your Brainam account; <strong>or</strong></p>
       <p>2.&nbsp;Visit <a href="https://brainam.ai/data-deletion"><strong>brainam.ai/data-deletion</strong></a>, fill in the form, and select &ldquo;Meta-sourced data only.&rdquo;</p>
       <p>We will confirm receipt within <strong>48 hours</strong> and complete deletion within <strong>30 days</strong>, after which we will email you a confirmation reference number.</p>
+      <p>Upon receiving a Meta Data Deletion Request, or when you disconnect your Meta or WhatsApp account from Brainam, we purge all associated OAuth tokens, end-customer conversation logs, and cached profile data from our primary databases and instruct our sub-processors accordingly within <strong>30 days</strong>, retaining only records we are legally required to keep.</p>
     </div>
   </section>
 
@@ -812,7 +823,7 @@
   <footer class="bv-footer">
     <p>This Privacy Policy is governed by the laws of India. Any disputes shall be subject to the exclusive jurisdiction of the courts at <strong>New Delhi, India</strong>.</p>
     <p>&copy; 2026 Brainam Technologies Private Limited &middot; Operating: Plot No. 84, Second Floor A, Block B, Patel Garden, Kakrola, New Delhi, South West Delhi - 110078, Delhi &middot; Registered: Plot No. 84, Second Floor A, Block B, Patel Garden, Kakrola, New Delhi, South West Delhi - 110078, Delhi</p>
-    <p>Version 1.0 &middot; Last updated 23 May 2026</p>
+    <p>Version 1.1 &middot; Last updated 28 July 2026</p>
   </footer>
 
 </div>
